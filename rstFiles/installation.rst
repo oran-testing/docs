@@ -26,12 +26,12 @@ Clone Soft-Tester UE repository:
 
    git clone https://github.com/oran-testing/soft-t-ue && git submodule update --init --recursive
 
-To build the UE controller and webGUI, run:
+To build the UE controller and GUI, run:
 
 .. code-block:: bash
 
    cd soft-t-ue/docker
-   sudo docker compose build controller webui  --no-cache
+   sudo docker compose build controller grafana  --no-cache
 
 gNB side (Machine B)
 --------------------
@@ -70,7 +70,7 @@ To run the UE with controller and webGUI:
 .. code-block:: bash
 
    cd soft-t-ue/docker
-   sudo docker compose up controller webui
+   sudo docker compose up controller grafana
 
 To see the metrics, open `http://localhost:3000/ <http://localhost:3000/>`_ in the browser.
 

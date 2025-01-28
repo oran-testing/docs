@@ -2,7 +2,7 @@ Soft T UE Installation Guide
 ============================
 
 This project provides a GUI enabling users to run a series of white-box
-and black-box tests on the SRS RAN gNodeB.
+and black-box tests on the srsRAN gNodeB.
 
 The best way to install everything the Soft T UE system is using our
 install scripts:
@@ -72,6 +72,7 @@ To set up this project (currently, for ZeroMQ):
 
    cd srsRAN_Project/docker
    docker compose build
+   
 6. Perform network setup:
 
 .. code:: bash
