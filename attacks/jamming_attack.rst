@@ -4,7 +4,7 @@ Jamming Attack
 Introduction
 -------------
 Jamming is the intentional disruption of a wireless signal by transmitting a strong interference on the same frequency, blocking or degrading the intended communication.
-Currently, there are 4 main jamming methods :sup:`[2] <https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=5343062>`_ :
+Currently, there are 4 main jamming methods `[1] <https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=5343062>`_ :
 
 1. Spot Jamming
 2. Sweep Jamming
