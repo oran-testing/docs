@@ -21,14 +21,26 @@ System Architecture
 
 .. toctree::
    :maxdepth: 1
-   :caption: General
+   :caption: Getting Started
 
    Installation guide <rstFiles/installation>
-   Components of Soft-T UE <rstFiles/components>
+   Configuration <rstFIile/configuration>
    
 .. toctree::
    :maxdepth: 1
-   :caption: Attacks implemented
+   :caption: Attacks
 
-   attacks/jamming_attack.rst
+   Jamming <attacks/jamming_attack.rst>
   
+.. toctree::
+   :maxdepth: 1
+   :caption: Metrics
+
+   Grafana <rstFiles/installation>
+   Srsue Metrics <rstFiles/components>
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Architecture
+
+   Overview <rstFiles/components>
