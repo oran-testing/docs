@@ -1,12 +1,9 @@
-.. Soft-Tester UE documentation master file, created by
-   sphinx-quickstart on Thu Sep 12 16:04:18 2024.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
-NTIA Software Tester UE
+TEstiNg and Security Analysis for Open RAN (TENSOR) UE
 ==========================
 
-Penetration testing tool for Software Defined Radio
+Penetration testing tool for 5G and O-RAN security vulnerabilities using software-defined radio UE emulation :strong:`\`\`code sample\`\``
+
+**``rf_u``**
 
 Overview
 --------
@@ -23,7 +20,7 @@ System Architecture
    :maxdepth: 1
    :caption: Getting Started
 
-   Installation guide <rstFiles/installation>
+   Installation Guide <rstFiles/installation>
    Configuration <rstFIile/configuration>
    
 .. toctree::
@@ -37,7 +34,7 @@ System Architecture
    :caption: Metrics
 
    Grafana <rstFiles/installation>
-   Srsue Metrics <rstFiles/components>
+   srsUE Metrics <rstFiles/components>
 
 .. toctree::
    :maxdepth: 1
