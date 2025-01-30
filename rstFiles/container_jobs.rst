@@ -6,7 +6,7 @@ Controller
 -  Start processes
 -  Monitor process status
 -  Log errors and process logs
--  Send process logs to influxdb
+-  Send process logs to InfluxDB
 -  Configure data dumps
 -  Maintain and establish correct process environment
 -  Manages application lifecycle
@@ -20,7 +20,7 @@ srsUE
 -----
 
 -  Run attacks
--  Send metrics directly to influxdb
+-  Send metrics directly to InfluxDB
 
 Uu agent
 --------
@@ -42,7 +42,7 @@ Channel Sounder
 
 Type: optional data display and management
 
-influxdb
+InfluxDB
 --------
 
 -  Store data in realtime

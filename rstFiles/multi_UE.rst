@@ -1,4 +1,4 @@
-How to run srsRAN with multiple Ues
+How to run srsRAN with multiple UEs
 ---------------------------------------
 
 `Multi-UE emulation <https://docs.srsran.com/projects/project/en/latest/tutorials/source/srsUE/source/index.html#multi-ue-emulation>`_

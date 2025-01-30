@@ -2,7 +2,7 @@ Soft T UE Installation Guide
 ============================
 
 This project provides a GUI enabling users to run a series of white-box and
-black-box tests on the SRS RAN gNodeB.
+black-box tests on the srsRAN gNodeB.
 
 The best way to install everything the Soft T UE system is using our install scripts:
 

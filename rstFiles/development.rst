@@ -2,9 +2,7 @@ Development Overview
 ====================
 
 Controller Development
-------------
-
-
+-----------------------
 
 First, build the controller container:
 
@@ -44,11 +42,7 @@ Then, the argument can be accessed in the `rrc_args_t` struct during execution.
 **NOTE:** Adding too much logic to any of the UE threads can cause timing issues with the gNB, so keep speed and efficiency in mind.
 
 Standalone Attack Development
-------------
-
-
-
-
+------------------------------
 
 To make a standalone attack work with the system, add a class to the controller for starting and monitoring its container.  
 

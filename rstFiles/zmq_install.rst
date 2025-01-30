@@ -2,7 +2,7 @@ Overview
 ===========
 
 This project provides a GUI enabling users to run a series of white-box and
-black-box tests on the SRS RAN gNodeB.
+black-box tests on the srsRAN gNodeB.
 
 Setup
 -----
