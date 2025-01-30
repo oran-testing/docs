@@ -6,25 +6,23 @@ Penetration testing tool for 5G and O-RAN security vulnerabilities using softwar
 Overview
 --------
 
-This project is a security testing tool based on the srsRAN Project's User Equipment, designed to test 5G and open radio access networks (RANs) via the Uu air interface between the UE and the network. While enabling various types of testing, the primary focus of this software is on RAN security testing.  
+This project is a security testing tool based on srsRAN Project's User Equipment, used to test 5G and open radio access networks (O-RAN) via the Uu air interface between the UE and the network. While this enables different types of testing, the focus of the software is on RAN security testing. This Soft T-UE is a fully software-defined and compatible with widely available, commercial-off-the-shelf hardware. 
 
-This software-defined testing UE (T-UE) is fully software-based and compatible with widely available, commercial off-the-shelf (COTS) software radio hardware. Standardized 3GPP or O-RAN tests, as well as custom test procedures, can be implemented and executed at minimal cost and at different stages of RAN development and integration. This system facilitates testing across multiple commercial and open-source RAN implementations with minimal technical overhead. Additionally, many attacks on the RAN can be executed automatically by the system.
-
-System Architecture
--------------------
-
-.. image:: images/soft-t-ue-system.png
-
+The key to this testing equipment is providing key performance indicators of the RAN once under attack such as:
 
 .. toctree::
    :maxdepth: 1
-   :caption: Getting Started
+   :caption: Metrics
 
-   Quickstart <rstFiles/quickstart>
-   Installation <rstFiles/installation>
-   Configuration <rstFiles/configuration>
-   Routing Traffic <rstFiles/ip_routing>
+   Grafana <rstFiles/grafana_metrics>
+   srsUE Metrics <rstFiles/metrics_documentation>
 
+
+Testing Capabilities
+---------------------
+
+Standardized 3GPP or O-RAN tests as well as custom test procedures can then be implemented and executed at minimal cost and at different stages of RAN development and integration. This system allows for testing many commercial and open source random access networks with minimal technical overhead. Many attacks on the RAN can be run automatically by the system.
+The available attacks are:
 
 .. toctree::
    :maxdepth: 1
@@ -35,12 +33,12 @@ System Architecture
    Flooding <attacks/flooding_attack>
 
 
-.. toctree::
-   :maxdepth: 1
-   :caption: Metrics
+System Architecture
+--------------------
 
-   Grafana <rstFiles/grafana_metrics>
-   srsUE Metrics <rstFiles/metrics_documentation>
+The main components of the system architecture are the controller, the GUI (Grafana), ...
+
+.. image:: images/soft-t-ue-system.png
 
 
 .. toctree::
@@ -49,6 +47,19 @@ System Architecture
 
    Overview <rstFiles/components>
    Container Jobs <rstFiles/container_jobs>
+
+
+To get started using the Soft T-UE please follow the documentation below.
+
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Getting Started
+
+   Quickstart <rstFiles/quickstart>
+   Installation <rstFiles/installation>
+   Configuration <rstFiles/configuration>
+   Routing Traffic <rstFiles/ip_routing>
 
 
 .. toctree::
