@@ -12,7 +12,7 @@ This project is a security testing tool based on srsRAN Project's User Equipment
 System Architecture
 --------------------
 
-.. image:: images/placeholder.png
+.. image:: images/soft-t-ue-system.png
 
 
 .. toctree::
