@@ -13,7 +13,7 @@ gNB:
 
 Note that all UE network commands must be run inside netns ue1 if you are running the UE with ZMQ on one machine.
 
-ue:
+UE:
 
 .. code:: bash
 
@@ -23,13 +23,13 @@ ue:
 Running Iperf
 -------------
 
-gnb:
+gNB:
 
 .. code:: bash
 
  iperf3 -s -i 1
 
-ue:
+UE:
 
 .. code:: bash
 
