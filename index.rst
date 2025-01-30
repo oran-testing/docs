@@ -17,7 +17,6 @@ The key to this testing equipment is providing key performance indicators of the
    Grafana <rstFiles/grafana_metrics>
    srsUE Metrics <rstFiles/metrics_documentation>
 
-
 Testing Capabilities
 ---------------------
 
@@ -31,7 +30,6 @@ The available attacks are:
    Jamming <attacks/jamming_attack>
    Fuzzing <attacks/fuzzing_attack>
    Flooding <attacks/flooding_attack>
-
 
 System Architecture
 --------------------
@@ -48,9 +46,7 @@ The main components of the system architecture are the controller, the GUI (Graf
    Overview <rstFiles/components>
    Container Jobs <rstFiles/container_jobs>
 
-
 To get started using the Soft T-UE please follow the documentation below.
-
 
 .. toctree::
    :maxdepth: 1
@@ -61,7 +57,6 @@ To get started using the Soft T-UE please follow the documentation below.
    Configuration <rstFiles/configuration>
    Routing Traffic <rstFiles/ip_routing>
 
-
 .. toctree::
    :maxdepth: 1
    :caption: For Developers
@@ -69,4 +64,3 @@ To get started using the Soft T-UE please follow the documentation below.
    Development Overview <rstFiles/development>
    Message Types <rstFiles/message_types>
    Monitor Thread API <rstFiles/controller_api_guide>
-
