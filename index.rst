@@ -3,7 +3,7 @@ TEstiNg and Security Analysis for Open RAN (TENSOR) UE
 
 Penetration testing tool for 5G and O-RAN security vulnerabilities using software-defined radio UE emulation :strong:`\`\`code sample\`\``
 
-**``rf_u``**
+:bold-point:`example_code()`
 
 Overview
 --------

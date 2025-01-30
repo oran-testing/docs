@@ -41,3 +41,7 @@ footer {
 .rst-versions .rst-other-versions dl:last-child {
   display: none !important;
 }
+
+.bold-point {
+  font-weight: bold;
+}
