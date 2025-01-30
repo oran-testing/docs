@@ -1,6 +1,7 @@
 Soft Tester UE Controller API Guide
 ===================================
 
+------------------------------------------
 
 What is the Controller API for?
 -------------------------------
@@ -15,25 +16,32 @@ controller expects, which we will discuss in the following document.
 The \__init__() method
 ----------------------
 
-Parameters: - **influxdb_client**: An instance of the InfluxDBClient
-class, used to write any desired data to the influxdb container -
-**docker_client**: An instance of the DockerClient class, used to start
-and stop necessary containers
+Parameters:
 
-Tasks: - Store parameters for later use
+- **influxdb_client**: An instance of the InfluxDBClient class, used to write any desired data to the influxdb container 
+- **docker_client**: An instance of the DockerClient class, used to start and stop necessary containers
+
+Tasks: 
+
+- Store parameters for later use
 
 The start() method
 ------------------
 
-Parameters: - **config**: defaults to "", the path of the config file
-used by the containerized software (if any) - **args**: defaults to [],
-a list of strings to pass to the containerized software on startup (if
-any)
+Parameters: 
 
-Tasks: - Start the software in a container - Start a thread to collect
-and send any necessary data
+- **config**: defaults to "", the path of the config file used by the containerized software (if any) 
+- **args**: defaults to [], a list of strings to pass to the containerized software on startup (if any)
+
+Tasks: 
+
+- Start the software in a container 
+- Start a thread to collect and send any necessary data
 
 The stop() method
 -----------------
 
-Tasks: - Stop and destroy the container - Stop and cleanup any threads
+Tasks: 
+
+- Stop and destroy the container 
+- Stop and cleanup any threads
