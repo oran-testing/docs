@@ -1,9 +1,7 @@
 TEstiNg and Security Analysis for Open RAN (TENSOR) UE
 ==========================
 
-Penetration testing tool for 5G and O-RAN security vulnerabilities using software-defined radio UE emulation :strong:`\`\`code sample\`\``
-
-:bold-point:`example_code()`
+Penetration testing tool for 5G and O-RAN security vulnerabilities using software-defined radio UE emulation
 
 Overview
 --------
@@ -21,7 +19,7 @@ System Architecture
    :caption: Getting Started
 
    Installation Guide <rstFiles/installation>
-   Configuration <rstFIile/configuration>
+   Configuration <rstFiles/configuration>
    
 .. toctree::
    :maxdepth: 1
@@ -41,3 +39,17 @@ System Architecture
    :caption: Architecture
 
    Overview <rstFiles/components>
+   container_jobs <rstFiles/container_jobs>
+   controller_api_guide <rstFiles/controller_api_guide>
+   development <rstFiles/development>
+   installation_guide <rstFiles/installation_guide>
+   intro <rstFiles/introduction>
+   ip_routing <rstFiles/ip_routing>
+   message_types <rstFiles/message_types>
+   metrics_documentation <rstFiles/metrics_documentation>
+   multi_UE <rstFiles/multi_UE>
+   Running_the_Security_Test <rstFiles/Running_the_Security_Test>
+   traffic <rstFiles/traffic>
+   useful_links <rstFiles/useful_links>
+   zmq_install <rstFiles/zmq_install>
+   
