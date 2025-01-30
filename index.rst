@@ -48,7 +48,7 @@ System Architecture
    message_types <rstFiles/message_types>
    metrics_documentation <rstFiles/metrics_documentation>
    multi_UE <rstFiles/multi_UE>
-   Running_the_Security_Test <rstFiles/Running_the_Security_Test>
+   Running_the_Security_Test <rstFiles/introduction>
    traffic <rstFiles/traffic>
    useful_links <rstFiles/useful_links>
    zmq_install <rstFiles/zmq_install>
