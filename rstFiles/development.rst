@@ -11,15 +11,15 @@ First install poetry:
 Then navigate to the poetry project directory (where the pyproject.toml
 file is located) and run ``poetry install``
 
-if you need to add a new dependency run ``poetry add <dep name>`` to
-reformat python code run ``poetry run black .`` to manage python imports
-code run ``poetry run isort .`` to lint python code run
-``poetry run flake8 .`` for debugging and static typing of python code
-run ``poetry run mypy .`` to run python tests run
-``poetry run pytest ./tests/__init__.py``
+Run:
 
-to show a tree of the current packages and their dependencies run
-``poetry show --tree``
+- ``poetry add <dep name>`` to add a new dependency
+- ``poetry run black .`` to reformat python code 
+- ``poetry run isort .`` to manage python imports code 
+- ``poetry run flake8 .`` to lint python code
+- ``poetry run mypy .`` for debugging and static typing of python code
+- ``poetry run pytest ./tests/__init__.py`` to run python tests
+- ``poetry show --tree`` to show a tree of the current packages and their dependencies 
 
 C++ Development
 ---------------
