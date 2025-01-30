@@ -1,46 +1,56 @@
-Python Development
-------------------
+Development Overview
+====================
 
-First install poetry:
+Controller Development
+------------
 
-.. code:: bash
 
-   sudo apt install python3 pipx
-   pipx install poetry
 
-Then navigate to the poetry project directory (where the pyproject.toml
-file is located) and run ``poetry install``
-
-Run:
-
-- ``poetry add <dep name>`` to add a new dependency
-- ``poetry run black .`` to reformat python code 
-- ``poetry run isort .`` to manage python imports code 
-- ``poetry run flake8 .`` to lint python code
-- ``poetry run mypy .`` for debugging and static typing of python code
-- ``poetry run pytest ./tests/__init__.py`` to run python tests
-- ``poetry show --tree`` to show a tree of the current packages and their dependencies 
-
-C++ Development
----------------
-
-For all C++ development (primarily on srsRAN code) we will be using
-clangd to format code as we write.
-
-Install the C++ VSCode extension, and it will automatically detect and
-use the .clang-tidy file If you are using another editor install and run
-a clangd LSP server like so:
+First, build the controller container:
 
 .. code:: bash
 
-   sudo apt install clangd
-   cd <repo folder>
-   clangd --clang-tidy .
+   docker compose build controller
 
-Then the clangd process will format code passed through stdout
+Then enter the container using `docker run`:
 
-Repo Management
----------------
+.. code:: bash
 
-what repos should we have? Should everything be committed to one or
-should we split based on responsiblites.
+   docker run -it controller bash
+
+The entry point for the controller is the following:
+
+.. code:: bash
+
+   /usr/bin/python3 /app/main.py --config $CONFIG
+
+Changes can be made and tested either inside the container, or you can rebuild when you want to test.
+
+UE-Based Attack Development
+---------------------------
+
+When developing attacks in the UE, the `srsue` directory contains all the source code. A good place to start is the `hdr` directory, which contains headers specific to each layer of the stack.
+
+We recommend adding an argument to `main.cc` like the following:
+
+.. code:: c++
+
+   ("rrc.some_attack_argument",
+      bpo::value<int>(&args->rrc.some_attack_argument)->default_value(-1),
+      "Some argument for an attack")
+
+Then, the argument can be accessed in the `rrc_args_t` struct during execution.
+
+**NOTE:** Adding too much logic to any of the UE threads can cause timing issues with the gNB, so keep speed and efficiency in mind.
+
+Standalone Attack Development
+------------
+
+
+
+
+
+To make a standalone attack work with the system, add a class to the controller for starting and monitoring its container.  
+
+The guide for the controller’s monitoring thread API can be found in the `Monitor Thread API` section.
+
