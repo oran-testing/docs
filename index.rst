@@ -14,11 +14,13 @@ System Architecture
 
 .. image:: images/placeholder.png
 
+
 .. toctree::
    :maxdepth: 1
    :caption: Getting Started
 
-   Installation Guide <rstFiles/installation>
+   Quickstart Guide <rstFiles/quickstart>
+   Installation guide <rstFiles/installation>
    Configuration <rstFiles/configuration>
    
 .. toctree::
