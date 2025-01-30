@@ -3,7 +3,7 @@ Python Development
 
 First install poetry:
 
-::
+.. code:: bash
 
    sudo apt install python3 pipx
    pipx install poetry
@@ -11,7 +11,7 @@ First install poetry:
 Then navigate to the poetry project directory (where the pyproject.toml
 file is located) and run ``poetry install``
 
-if you need to add a new dependency run ``poetry add `` to
+if you need to add a new dependency run ``poetry add <dep name>`` to
 reformat python code run ``poetry run black .`` to manage python imports
 code run ``poetry run isort .`` to lint python code run
 ``poetry run flake8 .`` for debugging and static typing of python code
@@ -31,10 +31,10 @@ Install the C++ VSCode extension, and it will automatically detect and
 use the .clang-tidy file If you are using another editor install and run
 a clangd LSP server like so:
 
-::
+.. code:: bash
 
    sudo apt install clangd
-   cd 
+   cd <repo folder>
    clangd --clang-tidy .
 
 Then the clangd process will format code passed through stdout
