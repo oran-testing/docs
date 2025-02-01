@@ -1,4 +1,5 @@
-Type: master
+Archtecture Overview
+===================
 
 Controller
 ----------
@@ -12,11 +13,7 @@ Controller
 -  Manages application lifecycle
 -  Handles on time start and terminate
 
-Make standardized interface for components
-
-Type: subprocess containers
-
-srsUE
+rtUE
 -----
 
 -  Run attacks
@@ -40,7 +37,6 @@ Channel Sounder
 
 -  Send IQ and PHY data to InfluxDB
 
-Type: optional data display and management
 
 InfluxDB
 --------
@@ -53,5 +49,3 @@ Grafana
 -------
 
 -  Display metrics in a simple format
-
-NOTE: Protected RACH PAPER: DURIP lab as service Ansible (replace GitHub CI/CD)

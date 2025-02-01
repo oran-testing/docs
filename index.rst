@@ -48,8 +48,7 @@ Our team will respond to any issues as quickly as possible. We appreciate any fe
    :maxdepth: 1
    :caption: Architecture
 
-   Overview <rstFiles/components>
-   Container Jobs <rstFiles/container_jobs>
+   Overview <rstFiles/container_jobs>
 
 
 .. toctree::

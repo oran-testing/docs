@@ -51,11 +51,11 @@ html_context = {
         ),
         (
             '<i class="fa fa-github fa-fw"></i> Source code',
-            "https://github.com/oran-testing/soft-t-ue",
+            "https://github.com/oran-testing/ran-tester-ue",
         ),
         (
             '<i class="fa fa-bug fa-fw"></i> Report an issue',
-            "https://github.com/oran-testing/soft-t-ue/issues",
+            "https://github.com/oran-testing/ran-tester-ue/issues",
         ),
     ],
 }
