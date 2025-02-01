@@ -4,36 +4,49 @@ IP Routing
 Routing configuration
 ---------------------
 
-gNB:
+**On the gNB machine:**
 
 .. code:: bash
 
  sudo ip ro add 10.45.0.0/16 via 10.53.1.2
- ping 10.45.1.2
+ ping 10.45.1.2 # check downlink connection
 
 Note that all UE network commands must be run inside netns ue1 if you are running the UE with ZMQ on one machine.
 
-UE:
+**inside the UE container:**
+
+First find the IP of the iface tun_srsue:
 
 .. code:: bash
 
- sudo ip route add default via 10.45.1.1 dev tun_srsue
- ping 10.45.1.1
+  ifconfig tun_srsue
+
+
+Then create a route through the iface
+
+.. code:: bash
+
+ ip ro add 10.53.0.0/16 via <iface ip> dev tun_srsue
+ ping 10.53.1.1 # check uplink connection
+
 
 Running Iperf
 -------------
 
-gNB:
+**On the gNB machine:**
 
 .. code:: bash
 
- iperf3 -s -i 1
+ iperf3 -s -i 1 -p <some unused port>
 
-UE:
+**inside the UE container:**
+
+You can send either TCP or UDP traffic at the desired bitrate:
 
 .. code:: bash
 
  # TCP
- iperf3 -c 10.53.1.1 -i 1 -t 60
+ iperf3 -c 10.53.1.1 -i 1 -t 60 -p <some unused port>
  # or UDP
- iperf3 -c 10.53.1.1 -i 1 -t 60 -u -b 10M
+ iperf3 -c 10.53.1.1 -i 1 -t 60 -u -b 10M -p <some unused port>
+

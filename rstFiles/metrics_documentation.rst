@@ -1,4 +1,4 @@
-srsRAN UE metrics send to influxDB
+RAN tester UE Metrics
 ==================================
 
 Singleton Metrics
@@ -66,7 +66,7 @@ Metrics
 -  :bold-point:`cfo`: Carrier frequency offset. Indicates the frequency offset
    between the received signal and the expected carrier frequency.
 
--  :bold-point:`rl_mcs`: Uplink modulation and coding scheme (MCS).
+-  :bold-point:`ul_mcs`: Uplink modulation and coding scheme (MCS).
 -  :bold-point:`dl_mcs`: Downlink modulation and coding scheme (MCS).
 -  :bold-point:`sinr`: Signal-to-Interference-plus-Noise Ratio (SINR).
    Represents the quality of the signal. If infinite, it is set to
@@ -102,10 +102,3 @@ Notes
 -  Errors returned from InfluxDB are logged to the console.
 -  The timestamp for each metric is derived from the system’s epoch time
    in nanoseconds.
-
-Improvements and Future Work
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
--  Neighboring cell metrics (e.g., neighbor cell RSRP) can be added in
-   the future.
--  Metrics differentiation for multiple UEs should be implemented.

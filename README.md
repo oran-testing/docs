@@ -1,4 +1,4 @@
-# Soft-Tester_UE
+# RAN Tester UE Documentation
 
 Documentation for the RAN tester UE software system - visit [docs.rantesterue.org](https://docs.rantesterue.org)
 

@@ -11,17 +11,22 @@ Currently, there are 4 main jamming methods `[1] <https://ieeexplore.ieee.org/st
 3. Barrage Jamming
 4. Deceptive Jamming
 
-In our system, we are implementing Spot Jamming, where all malicious transmission power is directed at a single frequency used by the target, utilizing the same modulation and sufficient power to override the original signal.
+In our system, we have currently implemented Spot Jamming, where all malicious transmission power is directed at a single frequency used by the target, utilizing the same modulation and sufficient power to override the original signal.
 
+Adding to your test
+------------------
 
-Implementation (UE)
---------------------------
+In your controller config, located in docker/controller/configs/ add the following to the processes list:
 
-- Transmit a higher volume of RACH messages
-- Configure UE to transmit at a higher gain
+.. code-block:: yaml
 
+   processes:
+    - type: "jammer"
+      config_file: "configs/basic_jammer.yaml"
+ 
 Attack Metrics
 ----------------
 - Inability of UEs to connect
 - Low channel quality
 - gNB overload /crash
+- UE detach

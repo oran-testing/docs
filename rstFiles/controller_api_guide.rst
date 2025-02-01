@@ -1,7 +1,5 @@
-Soft Tester UE Controller API Guide
+RAN Tester UE Controller API Guide
 ===================================
-
-------------------------------------------
 
 What is the Controller API for?
 -------------------------------

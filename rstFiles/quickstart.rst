@@ -1,6 +1,19 @@
 Quickstart Guide
 ================
 
+Dependencies
+------------
+
+The RAN tester UE system has the following necessary dependencies. Please install them beforehand.
+
+    - `docker <https://docs.docker.com/engine/install/>`_
+    - `docker compose <https://docs.docker.com/compose/install/>`_
+    - `UHD <https://files.ettus.com/manual/page_install.html>`_
+
+
+Building the Containers
+-------------
+
 First, clone the core repository and its submodules:
 
 .. code-block:: bash
@@ -12,6 +25,10 @@ Then build the necessary containers:
 .. code-block:: bash
 
    cd docker && sudo docker compose build
+
+
+Configure Security Test
+-------------
 
 The environment is defined in the controller config (`soft-t-ue/docker/controller/configs`):
 
@@ -39,6 +56,10 @@ The environment is defined in the controller config (`soft-t-ue/docker/controlle
 .. note::
 
    The config used by the controller is defined in `soft-t-ue/docker/.env` as `DOCKER_CONTROLLER_INIT_CONFIG`.
+
+
+Start Security Test
+-----------
 
 The following will run a jammer and UE with the requested environment, writing all data to InfluxDB and displaying metrics in real-time with Grafana:
 
