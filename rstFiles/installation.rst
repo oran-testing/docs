@@ -27,7 +27,10 @@ Clone Soft-Tester UE repository:
 
 .. code-block:: bash
 
-   git clone https://github.com/oran-testing/ran-tester-ue && git submodule update --init --recursive
+   git clone https://github.com/oran-testing/ran-tester-ue
+   cd ran-tester-ue
+   git submodule update --init --recursive
+
 
 Then run cmake to install (linux only):
 

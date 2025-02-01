@@ -18,7 +18,9 @@ First, clone the core repository and its submodules:
 
 .. code-block:: bash
 
-   git clone https://github.com/oran-testing/soft-t-ue && git submodule update --init --recursive
+   git clone https://github.com/oran-testing/ran-tester-ue
+   cd ran-tester-ue
+   git submodule update --init --recursive
 
 Then build the necessary containers:
 
@@ -30,7 +32,7 @@ Then build the necessary containers:
 Configure Security Test
 -------------
 
-The environment is defined in the controller config (`soft-t-ue/docker/controller/configs`):
+The environment is defined in the controller config (`ran-tester-ue/docker/controller/configs`):
 
 .. code-block:: yaml
 
@@ -55,7 +57,7 @@ The environment is defined in the controller config (`soft-t-ue/docker/controlle
 
 .. note::
 
-   The config used by the controller is defined in `soft-t-ue/docker/.env` as `DOCKER_CONTROLLER_INIT_CONFIG`.
+   The config used by the controller is defined in `ran-tester-ue/docker/.env` as `DOCKER_CONTROLLER_INIT_CONFIG`.
 
 
 Start Security Test
