@@ -30,3 +30,15 @@ Attack Metrics
 - Low channel quality
 - gNB overload /crash
 - UE detach
+
+Start Security Test
+-----------
+
+The following will run a jammer and UE with the requested environment, writing all data to InfluxDB and displaying metrics in real-time with Grafana:
+
+.. code-block:: bash
+
+   sudo docker compose up influxdb grafana controller
+
+The Grafana dashboard can be found at `http://localhost:3300`
+
