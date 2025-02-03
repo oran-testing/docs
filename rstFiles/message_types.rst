@@ -39,7 +39,6 @@ MAC (Medium Access Control)
 - Downlink Control Information (DCI): Sent by the gNB to provide scheduling information for downlink/uplink data.
 - Uplink Data: User data sent by the UE to the gNB.
 - Downlink Data: User data sent by the gNB to the UE.
-
 RLC (Radio Link Control)
 -------------------------
 - Data: Carries user and control data between the UE and the gNB.

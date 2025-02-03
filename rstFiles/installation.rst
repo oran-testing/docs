@@ -1,99 +1,64 @@
+============
+Baremetal Installation
+============
+
 .. note:: 
 
-    Soft-Tester UE is designed to run on Ubuntu and is tested on Ubuntu 24.04.
+    RAN tester UE is designed to run on Ubuntu and is tested on Ubuntu 24.04.
 
-
-============
-Installation
-============
 
 Build Tools and Dependencies
 ----------------------------
 
-The Soft-Tester UE system has the following necessary dpendencies. Please install them beforehand.
+The srsRAN UE system has the following necessary dependencies. Please install them beforehand.
 
-    - `Docker <https://docs.docker.com/engine/install/ubuntu/>`_
-    - `pip <https://pip.pypa.io/en/stable/installation/>`_
-    - `venv <https://pypi.org/project/virtualenv/>`_
+    - `UHD <https://files.ettus.com/manual/page_install.html>`_
+    - `ZMQ <https://zeromq.org/get-started/>`_
+    - `boost <https://www.boost.org/doc/libs/release/more/getting_started/index.html>`_
+    - `cmake <https://cmake.org/install/>`_
+    - `gcc <https://gcc.gnu.org/install/>`_
+    - `make <https://www.gnu.org/software/make/>`_
 
 
-UE side (Machine A)
+Building the UE
 -------------------
 
 Clone Soft-Tester UE repository:
 
 .. code-block:: bash
 
-   git clone https://github.com/oran-testing/soft-t-ue && git submodule update --init --recursive
+   git clone https://github.com/oran-testing/ran-tester-ue
+   cd ran-tester-ue
+   git submodule update --init --recursive
 
-To build the UE controller and GUI, run:
+
+Then run cmake to install (linux only):
 
 .. code-block:: bash
 
-   cd soft-t-ue/docker
-   sudo docker compose build controller grafana  --no-cache
+   cd ran-tester-ue
+   mkdir -p build
+   cd build
+   cmake ..
+   make -j$(nproc)
 
-gNB side (Machine B)
+
+Testing against a RAN
 --------------------
 
-Clone Soft-Tester UE repository and srsRAN Project separately:
+Go to srsRAN's documentation and follow their tutorial for setting up a gNB, with either ZMQ or UHD. Use the configs from the ran-tester-ue repository, since they are tested to work with our 
+modified UE.
 
-.. note:: 
+- ZMQ configuration files can be found in ran-tester-ue/configs/zmq and UHD configuration files can be found in ran-tester-ue/configs/uhd/multi_ue
 
-    Please refer to the official installation guide for `srsRAN Project <https://docs.srsran.com/projects/project/en/latest/user_manuals/source/installation.html>`_ .
+.. NOTE::
 
-.. code-block:: bash
-
-   git clone https://github.com/oran-testing/soft-t-ue && git submodule update --init --recursive
-   git clone https://github.com/srsran/srsRAN_Project
+  Use our subscriber_db.csv file in ran-tester-ue/configs for Open5GS. We recommend the docker compose version. Copy the file to docker/open5gs and modify open5gs.env
 
 
-Install dockerized Open5GS:
+Once the RAN is configured correctly run the ue with the following:
 
 .. code-block:: bash
 
-   cd srsRAN_Project/docker
-   sudo systemctl restart docker
-   sudo docker compose build 5gc
+   sudo rtue configs/zmq/ue_zmq.conf
 
-Running
-#######
-
-.. warning::
-    Always begin the experiment with UE first, otherwise, the connection will fail.
-
-UE side (Machine A):
--------------------
-
-To run the UE with controller and webGUI:
-
-.. code-block:: bash
-
-   cd soft-t-ue/docker
-   sudo docker compose up controller grafana
-
-To see the metrics, open `http://localhost:3000/ <http://localhost:3000/>`_ in the browser.
-
-
-gNB side (Machine B):
---------------------
-
-To run the Open5GS:
-
-.. code-block:: bash
-
-   cd srsRAN_Project/docker
-   sudo docker compose up 5gc
-
-
-To run the gNB:
-
-.. code-block:: bash
-
-   sudo gnb -c ./soft-t-ue/configs/zmq/gnb_zmq_docker.yaml
-
-.. note:: 
-
-   If running with ZMQ, use either `gnb_zmq_docker.yaml` or `gnb_zmq.yaml`. Otherwise, use `.../uhd/gnb_uhd.yaml`.
-
-Once the connection establishes, you can check the webGUI localhost interface to collect the logs.

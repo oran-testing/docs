@@ -10,7 +10,7 @@ GUI.
 Modified srsRAN User Equipment
 ------------------------------
 
-To Install the customized srsRAN UE:
+To install the customized srsRAN UE:
 
 .. code:: bash
 

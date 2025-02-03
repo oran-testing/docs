@@ -1,5 +1,5 @@
 =======================
-Components of Soft-T UE
+Components of RAN Tester UE
 =======================
 
 

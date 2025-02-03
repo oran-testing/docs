@@ -13,8 +13,9 @@
 import os
 import sys
 import sphinx_rtd_theme
-
 from datetime import date
+from docutils import nodes
+from docutils.parsers.rst import roles
 
 year = str(date.today().year)
 
@@ -50,11 +51,11 @@ html_context = {
         ),
         (
             '<i class="fa fa-github fa-fw"></i> Source code',
-            "https://github.com/oran-testing/soft-t-ue",
+            "https://github.com/oran-testing/ran-tester-ue",
         ),
         (
             '<i class="fa fa-bug fa-fw"></i> Report an issue',
-            "https://github.com/oran-testing/soft-t-ue/issues",
+            "https://github.com/oran-testing/ran-tester-ue/issues",
         ),
     ],
 }
@@ -70,3 +71,9 @@ html_css_files = [
 ]
 templates_path = ['_templates']
 
+def bold_point_role(name, rawtext, text, lineno, inliner, options={}, content=[]):
+    node = nodes.literal(text, text)
+    node['classes'].append('bold-point')
+    return [node], []
+
+roles.register_local_role('bold-point', bold_point_role)
