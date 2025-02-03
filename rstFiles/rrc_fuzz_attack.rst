@@ -23,10 +23,9 @@ The environment is defined in the controller config (`ran-tester-ue/docker/contr
 
 Attack Metrics
 ----------------
-- Inability of UEs to connect
-- Low channel quality
 - gNB overload /crash
-- UE detach
+- Detach existing UEs
+- Discovery of buffer overflow vulnerabilities
 
 
 Start Security Test
