@@ -1,32 +1,42 @@
-Jamming Attack
-==========================================================
+RRC Fuzzing Attack
+===================
 
 Introduction
 -------------
-Jamming is the intentional disruption of a wireless signal by transmitting a strong interference on the same frequency, blocking or degrading the intended communication.
-Currently, there are 4 main jamming methods `[1] <https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=5343062>`_ :
+Random RRC fuzzing is a type of attack where random modifications are made to the values within the Service Data Unit (SDU) buffer of the Radio Resource Control (RRC) layer. After altering these values, the corrupted buffer is sent to the gNB (next-generation Node B). The goal of this process is to exploit potential vulnerabilities in the gNB's handling of RRC messages, potentially causing system malfunctions or unexpected behavior.
 
-1. Spot Jamming
-2. Sweep Jamming
-3. Barrage Jamming
-4. Deceptive Jamming
 
-In our system, we have currently implemented Spot Jamming, where all malicious transmission power is directed at a single frequency used by the target, utilizing the same modulation and sufficient power to override the original signal.
-
-Adding to your test
+Configure Security test
 ------------------
 
-In your controller config, located in docker/controller/configs/ add the following to the processes list:
+The environment is defined in the controller config (`ran-tester-ue/docker/controller/configs`):
 
 .. code-block:: yaml
 
-   processes:
-    - type: "jammer"
-      config_file: "configs/basic_jammer.yaml"
- 
+   processes: # REQUIRED: a list of all processes to start
+     - type: "rtue" # REQUIRED: the name of the subprocess class
+       config_file: "configs/zmq/ue_zmq_docker.conf" # OPTIONAL: the path to a config file in the subprocess container
+       args: "--rrc.sdu_fuzzed_bits 1 --rrc.fuzz_target_message 'rrcSetupRequest'" # OPTIONAL: arguments to pass to the subprocess container
+
+
+
+
 Attack Metrics
 ----------------
 - Inability of UEs to connect
 - Low channel quality
 - gNB overload /crash
 - UE detach
+
+
+Start Security Test
+-----------
+
+The following will run a UE fuzzer with the requested environment, writing all data to InfluxDB and displaying metrics in real-time with Grafana:
+
+.. code-block:: bash
+
+   sudo docker compose up influxdb grafana controller
+
+The Grafana dashboard can be found at `http://localhost:3300`
+
