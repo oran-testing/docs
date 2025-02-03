@@ -15,18 +15,18 @@ Note that all UE network commands must be run inside netns ue1 if you are runnin
 
 **inside the UE container:**
 
-First find the IP of the iface tun_srsue:
+First find the IP of the iface tun_rtue:
 
 .. code:: bash
 
-  ifconfig tun_srsue
+  ifconfig tun_rtue
 
 
 Then create a route through the iface
 
 .. code:: bash
 
- ip ro add 10.53.0.0/16 via <iface ip> dev tun_srsue
+ ip ro add 10.53.0.0/16 via <iface ip> dev tun_rtue
  ping 10.53.1.1 # check uplink connection
 
 
