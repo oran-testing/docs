@@ -31,7 +31,7 @@ Current Features
 
 - **Highly optimized LDPC and Polar encoder/decoder for ARM Neon and x86 AVX2/AVX512**: Polar codes have lower encoding complexity than LDPC codes, but higher decoding complexity. This is because polar codes use a simple XOR operation to encode but require a complex successive cancellation decoding algorithm to decode it.
 
-- **Split 7.2 support using in-house OFH library**: Developed by the SRS team, OFH is an open-source, portable library with minimal 3rd-party dependencies. It has been designed to minimize the integration and configuration burden associated with using srsRAN with 3rd-party O-RUs.
+- **Split 7.2 support using in-house OFH library**: Developed by the SRS team, Open Fronthaul (OFH) is an open-source, portable library with minimal 3rd-party dependencies. It has been designed to minimize the integration and configuration burden associated with using srsRAN with 3rd-party O-RUs.
 
 - `All RRC procedures <https://embedx.medium.com/mastering-key-rrc-procedures-in-5g-a-visual-breakdown-1c0c0f3f344f>`_
 
@@ -41,9 +41,9 @@ Current Features
 5G NR RRC
 ---------
 
-RRC is Radio Resource Control. It is a layer 3 protocol used between the UE and the Base station. This protocol is specified by the 3GPP. RRC messages are transported via PDCP (Packet Data Convergence Protocol). By means of the signaling functions, the RRC configures the user and the control planes according to the network status and it allows for Radio Resource Management strategies that are required to be implemented. RRC parameters should be understood by the network and the UE which can communicate via radio channel. RRC is a layer within the 5G NR protocol stack. RRC (Radio Resource Control) protocol is used on the Air interface. The major functions of the RRC protocol include connection establishment and release functions, broadcast of system information, the establishment of radio bearers, reconfiguration, and release of RRC, paging notification, and releases. RRC exists only in the control plane, in the UE, and in the gNB.
+RRC (Radio Resource Control) is a layer 3 protocol used between the UE and the base station. This protocol is specified by the 3GPP. RRC messages are transported via PDCP (Packet Data Convergence Protocol). By means of the signaling functions, the RRC configures the user and the control planes according to the network status and it allows for Radio Resource Management strategies that are required to be implemented. RRC parameters should be understood by the network and the UE which can communicate via radio channel. RRC is a layer within the 5G NR protocol stack. RRC protocol is used on the Air interface. The major functions of the RRC protocol include connection establishment and release functions, broadcast of system information, the establishment of radio bearers, reconfiguration, and release of RRC, paging notification, and releases. RRC exists only in the control plane, in the UE, and in the gNB.
 
-The RRC idle mode is known as no connection mode, has the lowest energy consumption. The states in the RRC connected mode, are in order of decreasing power control. The transitions to lower energy consumption states occur when inactivity timers trigger. Different operators have different configurations for the inactivity timers, which leads to differences in energy consumption.
+The RRC idle mode is known as no connection mode and has the lowest energy consumption. The states in the RRC connected mode are in order of decreasing power control. The transitions to lower energy consumption states occur when inactivity timers trigger. Different operators have different configurations for the inactivity timers, which leads to differences in energy consumption.
 
 In the 5G NR, RRC has three distinct stages:
 
@@ -63,14 +63,14 @@ In the 5G NR, RRC has three distinct stages:
 
 In 4G & 5G, the signaling between UE and mobile network can be divided into two types: the Access Stratum (AS) and the Non-Access Stratum (NAS), each responsible for different functions:
 
-1. **Access Stratum (AS)** signalling handles the radio interface and communication between the user equipment (UE) and the radio access network (RAN). It deals with the establishment, maintenance, and termination of radio bearers, which are the logical channels used to transmit user data and control information over the air interface. The main functions of the Access Stratum include:
+1. **Access Stratum (AS)** signaling handles the radio interface and communication between the user equipment (UE) and the radio access network (RAN). It deals with the establishment, maintenance, and termination of radio bearers, which are the logical channels used to transmit user data and control information over the air interface. The main functions of the Access Stratum include:
 
    - **Radio Resource Control (RRC)**: RRC manages the connection setup and configuration between the UE and the RAN. It controls the radio resources and manages mobility-related procedures, such as handovers between cells.
    - **Packet Data Convergence Protocol (PDCP)**: PDCP is responsible for header compression and decompression, as well as ciphering and deciphering the user data packets.
    - **Radio Link Control (RLC)**: RLC ensures the reliable transmission of user data over the air interface by providing error correction, segmentation, and reassembly of data packets.
    - **Medium Access Control (MAC)**: MAC handles the scheduling and prioritization of data transmission between multiple UEs and the RAN.
 
-2. **Non-Access Stratum (NAS)** signalling handles the signaling and communication between the UE and the core network (CN). It is responsible for controlling the mobility and session management of the UE. The main functions of the Non-Access Stratum include:
+2. **Non-Access Stratum (NAS)** signaling handles the signaling and communication between the UE and the core network (CN). It is responsible for controlling the mobility and session management of the UE. The main functions of the Non-Access Stratum include:
 
    - **Session Management (SM)**: SM handles the establishment, modification, and termination of communication sessions between the UE and the core network. It manages the bearer services and mobility procedures between different access networks.
    - **Mobility Management (MM)**: MM is responsible for tracking the UE's location, managing location updates, and handling authentication and security-related procedures during the mobility of the UE.
@@ -108,14 +108,14 @@ Running the Security Test
 
 This tutorial assumes that you have already installed the srsRAN project and dependencies. The installation procedure can be found `here <https://github.com/oran-testing/soft-t-ue>`_.
 
-Run the SrsRAN Project:
+Run the srsRAN Project:
 
 .. code-block:: bash
 
    cd /opt/srsRAN_Project/docker/ 
    sudo docker compose up --build 5gc     
 
-Run the ZMQ Config file:
+Run the ZMQ config file:
 
 .. code-block:: bash
 
@@ -128,7 +128,7 @@ Build the file and send the message:
 
    cd soft-t-ue/build/
    cmake .. 
-   make -j16 
+   make -j $(nproc) 
    sudo make install
    cd srsue/src/
    sudo ./srsue ../../../configs/ue_zmq.conf --rrc.sdu_fuzzed_bits 1 --rrc.fuzz_target_message "rrcSetupRequest" 
@@ -138,7 +138,7 @@ Running With Multiple UEs over ZMQ
 ----------------------------------
 https://docs.srsran.com/projects/project/en/latest/tutorials/source/srsUE/source/index.html#multi-ue-emulation
 
-Open5gs:
+Open5GS:
 
 .. code-block:: bash
 
@@ -169,7 +169,7 @@ srsUE:
    sudo ./srsue ./ue2_zmq.conf
    sudo ./srsue ./ue3_zmq.conf
 
-gnb radio:
+gNB radio:
 
 .. code-block:: bash
 

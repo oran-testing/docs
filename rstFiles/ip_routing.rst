@@ -11,18 +11,18 @@ Routing configuration
  sudo ip ro add 10.45.0.0/16 via 10.53.1.2
  ping 10.45.1.2 # check downlink connection
 
-Note that all UE network commands must be run inside netns ue1 if you are running the UE with ZMQ on one machine.
+Note that all UE network commands must be run inside **netns ue1** if you are running the UE with ZMQ on one machine.
 
-**inside the UE container:**
+**Inside the UE container:**
 
-First find the IP of the iface tun_rtue:
+First, find the IP of the **tun_rtue** interface:
 
 .. code:: bash
 
   ifconfig tun_rtue
 
 
-Then create a route through the iface
+Then, create a route through the iface:
 
 .. code:: bash
 
@@ -39,7 +39,7 @@ Running Iperf
 
  iperf3 -s -i 1 -p <some unused port>
 
-**inside the UE container:**
+**Inside the UE container:**
 
 You can send either TCP or UDP traffic at the desired bitrate:
 

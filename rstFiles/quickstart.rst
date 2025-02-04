@@ -12,7 +12,7 @@ The RAN tester UE system has the following necessary dependencies. Please instal
 
 
 Building the Containers
--------------
+-----------------------
 
 First, clone the core repository and its submodules:
 
@@ -30,7 +30,7 @@ Then build the necessary containers:
 
 
 Configure Security Test
--------------
+-----------------------
 
 The environment is defined in the controller config (`ran-tester-ue/docker/controller/configs`):
 
@@ -61,7 +61,7 @@ The environment is defined in the controller config (`ran-tester-ue/docker/contr
 
 
 Start Security Test
------------
+-------------------
 
 The following will run a jammer and UE with the requested environment, writing all data to InfluxDB and displaying metrics in real-time with Grafana:
 

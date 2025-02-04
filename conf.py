@@ -19,8 +19,8 @@ from docutils.parsers.rst import roles
 
 year = str(date.today().year)
 
-project = u'Soft-Tester UE'
-copyright = u'{}, RAN TESTER UE'.format(year)
+project = u'RAN Tester UE'
+copyright = u'{}, RAN Tester UE'.format(year)
 author = u'Joshua J. Moore'
 release = '1.0'
 
@@ -31,7 +31,18 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.viewcode',
     'sphinx_copybutton',
+    'hoverxref.extension',
 ]
+
+hoverxref_auto_ref = True
+
+hoverxref_role_types = {
+    'hoverxref' : 'tooltip',
+    'ref' : 'tooltip',
+}
+
+if os.environ.get('READTHEDOCS') != 'True':
+    hoverxref_api_host = 'https://readthedocs.org'
 
 html_theme = 'sphinx_rtd_theme'
 html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
