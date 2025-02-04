@@ -15,14 +15,14 @@ The following are the contents of the RACH preamble message:
     symb
     snr
 
-When the UE is run with the correct arguments, it will attempt to send valid RACH preambles using every sequence_index
+When the UE is run with the correct arguments, it will attempt to send valid RACH preambles using every sequence_index.
 
-More information on the RACH procedure can be found here: `sharetechnote <https://www.sharetechnote.com/html/5G/5G_RACH.html>`_
+More information on the RACH procedure can be found here: `sharetechnote <https://www.sharetechnote.com/html/5G/5G_RACH.html>`_.
 
 Configure Security Test
 ------------------------
 
-In your controller config, located in ``docker/controller/configs/`` add the following to the processes list:
+In your controller config, located in ``docker/controller/configs/``, add the following to the processes list:
 
 .. code-block:: yaml
 
@@ -36,7 +36,7 @@ Attack Metrics
 - Inability to register new UEs to the RAN
 - UE disconnect
 - RAN crash or freeze
-- timing issues with existing UEs
+- Timing issues with existing UEs
 
 Start Security Test
 --------------------

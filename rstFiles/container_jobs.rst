@@ -26,7 +26,7 @@ Uu agent
 -  Run independent Uu attacks
 -  Send metrics to InfluxDB
 
-jammer
+Jammer
 ------
 
 -  Run jamming attacks flexibly

@@ -46,5 +46,7 @@ Standalone Attack Development
 
 To make a standalone attack work with the system, add a class to the controller for starting and monitoring its container.  
 
-The guide for the controller’s monitoring thread API can be found in the `Monitor Thread API` section.
+The guide for the controller’s monitoring thread API can be found in the :hoverxref:`Monitor Thread API <monitor_thread_api>` section.
+
+
 

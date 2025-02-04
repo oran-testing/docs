@@ -1,3 +1,5 @@
+.. _monitor_thread_api:
+
 RAN Tester UE Controller API Guide
 ===================================
 

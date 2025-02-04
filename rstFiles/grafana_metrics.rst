@@ -21,7 +21,7 @@ The metrics that are currently displayed using Grafana are:
 -  :bold-point:`active_ues`: Total number of UEs connected to the RAN.
 -  :bold-point:`total_ues`: Total number of UEs transmitting metrics to InfluxDB.
 
-Additionally, the total downlink and uplink bitrates of all UEs on the system is displayed.
+Additionally, the total downlink and uplink bitrates of all UEs on the system are displayed.
 
 What you should see
 -------------------

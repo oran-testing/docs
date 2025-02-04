@@ -1,6 +1,6 @@
-============
-Baremetal Installation
-============
+========================
+Bare Metal Installation
+========================
 
 .. note:: 
 
@@ -8,7 +8,7 @@ Baremetal Installation
 
 
 Build Tools and Dependencies
-----------------------------
+-----------------------------
 
 The srsRAN UE system has the following necessary dependencies. Please install them beforehand.
 
@@ -21,9 +21,9 @@ The srsRAN UE system has the following necessary dependencies. Please install th
 
 
 Building the UE
--------------------
+----------------
 
-Clone Soft-Tester UE repository:
+Clone RAN-Tester UE repository:
 
 .. code-block:: bash
 
@@ -32,31 +32,30 @@ Clone Soft-Tester UE repository:
    git submodule update --init --recursive
 
 
-Then run cmake to install (linux only):
+Then run cmake to install (Linux only):
 
 .. code-block:: bash
 
    cd ran-tester-ue
-   mkdir -p build
+   mkdir build
    cd build
-   cmake ..
-   make -j$(nproc)
+   cmake ../
+   make -j $(nproc)
 
 
 Testing against a RAN
---------------------
+----------------------
 
 Go to srsRAN's documentation and follow their tutorial for setting up a gNB, with either ZMQ or UHD. Use the configs from the ran-tester-ue repository, since they are tested to work with our 
 modified UE.
 
-- ZMQ configuration files can be found in ran-tester-ue/configs/zmq and UHD configuration files can be found in ran-tester-ue/configs/uhd/multi_ue
+- ZMQ configuration files can be found in ran-tester-ue/configs/zmq and UHD configuration files can be found in ``ran-tester-ue/configs/uhd/multi_ue``.
 
 .. NOTE::
 
   Use our subscriber_db.csv file in ran-tester-ue/configs for Open5GS. We recommend the docker compose version. Copy the file to docker/open5gs and modify open5gs.env
 
-
-Once the RAN is configured correctly run the ue with the following:
+Once the RAN is configured correctly, run the UE with the following:
 
 .. code-block:: bash
 
