@@ -1,4 +1,4 @@
-Archtecture Overview
+Architecture Overview
 ===================
 
 Controller
@@ -22,7 +22,7 @@ rtUE
 Uu agent
 --------
 
--  Man in the middle / sniffing / spoofing
+-  Man-in-the-middle / sniffing / spoofing
 -  Run independent Uu attacks
 -  Send metrics to InfluxDB
 
@@ -41,7 +41,7 @@ Channel Sounder
 InfluxDB
 --------
 
--  Store data in realtime
+-  Store data in real-time
 -  Facilitate CSV and DB data dumps
 -  Send metrics to Grafana
 

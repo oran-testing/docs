@@ -10,7 +10,7 @@ First, build the controller container:
 
    docker compose build controller
 
-Then enter the container using `docker run`:
+Then enter the container using ``docker run``:
 
 .. code:: bash
 
@@ -27,9 +27,9 @@ Changes can be made and tested either inside the container, or you can rebuild w
 UE-Based Attack Development
 ---------------------------
 
-When developing attacks in the UE, the `srsue` directory contains all the source code. A good place to start is the `hdr` directory, which contains headers specific to each layer of the stack.
+When developing attacks in the UE, the ``srsue`` directory contains all the source code. A good place to start is the ``hdr`` directory, which contains headers specific to each layer of the stack.
 
-We recommend adding an argument to `main.cc` like the following:
+We recommend adding an argument to ``main.cc`` like the following:
 
 .. code:: c++
 
@@ -37,7 +37,7 @@ We recommend adding an argument to `main.cc` like the following:
       bpo::value<int>(&args->rrc.some_attack_argument)->default_value(-1),
       "Some argument for an attack")
 
-Then, the argument can be accessed in the `rrc_args_t` struct during execution.
+Then, the argument can be accessed in the ``rrc_args_t`` struct during execution.
 
 **NOTE:** Adding too much logic to any of the UE threads can cause timing issues with the gNB, so keep speed and efficiency in mind.
 

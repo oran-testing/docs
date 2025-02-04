@@ -5,7 +5,7 @@ What is the Controller API for?
 -------------------------------
 
 The controller API exists to allow for the creation and monitoring of
-custom docker containers. A python thread, which we will refer to as a
+custom docker containers. A Python thread, which we will refer to as a
 **worker thread** is started by the controller’s main process, which
 should control and report one docker container, containing any desired
 software. The worker thread should have certain methods that the
@@ -16,7 +16,7 @@ The \__init__() method
 
 Parameters:
 
-- **influxdb_client**: An instance of the InfluxDBClient class, used to write any desired data to the influxdb container 
+- **influxdb_client**: An instance of the InfluxDBClient class, used to write any desired data to the InfluxDB container 
 - **docker_client**: An instance of the DockerClient class, used to start and stop necessary containers
 
 Tasks: 

@@ -7,9 +7,9 @@ Random RRC fuzzing is a type of attack where random modifications are made to th
 
 
 Configure Security test
-------------------
+------------------------
 
-The environment is defined in the controller config (`ran-tester-ue/docker/controller/configs`):
+The environment is defined in the controller config ``ran-tester-ue/docker/controller/configs``:
 
 .. code-block:: yaml
 
@@ -17,8 +17,6 @@ The environment is defined in the controller config (`ran-tester-ue/docker/contr
      - type: "rtue" # REQUIRED: the name of the subprocess class
        config_file: "configs/zmq/ue_zmq_docker.conf" # OPTIONAL: the path to a config file in the subprocess container
        args: "--rrc.sdu_fuzzed_bits 1 --rrc.fuzz_target_message 'rrcSetupRequest'" # OPTIONAL: arguments to pass to the subprocess container
-
-
 
 
 Attack Metrics
@@ -29,7 +27,7 @@ Attack Metrics
 
 
 Start Security Test
------------
+-------------------
 
 The following will run a UE fuzzer with the requested environment, writing all data to InfluxDB and displaying metrics in real-time with Grafana:
 
