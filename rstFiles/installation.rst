@@ -1,27 +1,43 @@
-============
-Baremetal Installation
-============
+===============================
+Baremetal (Native) Installation Guide
+===============================
 
 .. note:: 
 
     RAN tester UE is designed to run on Ubuntu and is tested on Ubuntu 24.04.
 
+The following are the steps that need to be taken to download and build the RAN tester UE:
 
-Build Tools and Dependencies
+1. Install necessary dependencies
+2. Clone the repository
+3. Build the codebase
+
+1. Required Build Tools and Dependencies
 ----------------------------
 
-The srsRAN UE system has the following necessary dependencies. Please install them beforehand.
+The srsRAN UE system has the following necessary dependencies:
 
     - `UHD <https://files.ettus.com/manual/page_install.html>`_
-    - `ZMQ <https://zeromq.org/get-started/>`_
+    - `ZMQ <https://zeromq.org/download/>`_
     - `boost <https://www.boost.org/doc/libs/release/more/getting_started/index.html>`_
-    - `cmake <https://cmake.org/install/>`_
+    - `cmake <https://cmake.org/download/>`_
     - `gcc <https://gcc.gnu.org/install/>`_
-    - `make <https://www.gnu.org/software/make/>`_
-
+    - `make <https://www.gnu.org/>` _
 
 Building the UE
 -------------------
+
+You can install the above mentioned build tools and other necessary components by running the following:
+
+.. code-block:: bash
+
+  apt update
+  apt-get install libzmq3-dev libboost-all-dev cmake gcc g++ make git pkg-config libfftw3-dev
+  libmbedtls-dev libsctp-dev libyaml-cpp-dev libgtest-dev
+
+
+
+
 
 Clone Soft-Tester UE repository:
 
@@ -41,7 +57,6 @@ Then run cmake to install (linux only):
    cd build
    cmake ..
    make -j$(nproc)
-
 
 Testing against a RAN
 --------------------
