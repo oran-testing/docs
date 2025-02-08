@@ -6,14 +6,15 @@ Baremetal (Native) Installation Guide
 
     RAN tester UE is designed to run on Ubuntu and is tested on Ubuntu 24.04.
 
-The following are the steps that need to be taken to download and build the RAN tester UE:
+
+The following steps outline the process to download and build the RAN Tester UE:
 
 1. Install necessary dependencies
 2. Clone the repository
-3. Build the codebase
+3. Build the code-base
 
 1. Required Build Tools and Dependencies
-----------------------------
+----------------------------------------
 
 The srsRAN UE system has the following necessary dependencies:
 
@@ -24,22 +25,20 @@ The srsRAN UE system has the following necessary dependencies:
     - `gcc <https://gcc.gnu.org/install/>`_
     - `make <https://www.gnu.org/>` _
 
-Building the UE
--------------------
 
-You can install the above mentioned build tools and other necessary components by running the following:
+
+To install the above mentioned build tools and other necessary dependencies, run the following:
 
 .. code-block:: bash
 
-  apt update
-  apt-get install libzmq3-dev libboost-all-dev cmake gcc g++ make git pkg-config libfftw3-dev
-  libmbedtls-dev libsctp-dev libyaml-cpp-dev libgtest-dev
+  sudo apt update
+  sudo apt-get install libzmq3-dev libboost-all-dev cmake gcc g++ make git pkg-config libfftw3-dev libmbedtls-dev libsctp-dev libyaml-cpp-dev libgtest-dev
 
 
+2. Cloning the repository
+-------------------------
 
-
-
-Clone Soft-Tester UE repository:
+To clone the Soft-Tester UE repository, run the following:
 
 .. code-block:: bash
 
@@ -48,7 +47,10 @@ Clone Soft-Tester UE repository:
    git submodule update --init --recursive
 
 
-Then run cmake to install (linux only):
+3. Building the Code-Base (UE)
+------------------------------
+
+To build the code-base, run the following:
 
 .. code-block:: bash
 
@@ -58,8 +60,9 @@ Then run cmake to install (linux only):
    cmake ..
    make -j$(nproc)
 
+
 Testing against a RAN
---------------------
+----------------------
 
 Go to srsRAN's documentation and follow their tutorial for setting up a gNB, with either ZMQ or UHD. Use the configs from the ran-tester-ue repository, since they are tested to work with our 
 modified UE.
