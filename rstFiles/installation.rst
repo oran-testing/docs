@@ -11,7 +11,7 @@ The following steps outline the process to download and build the RAN Tester UE:
 
 1. Install necessary dependencies
 2. Clone the repository
-3. Build the code-base
+3. Build the UE
 
 1. Required Build Tools and Dependencies
 ----------------------------------------
@@ -23,7 +23,7 @@ The srsRAN UE system has the following necessary dependencies:
     - `boost <https://www.boost.org/doc/libs/release/more/getting_started/index.html>`_
     - `cmake <https://cmake.org/download/>`_
     - `gcc <https://gcc.gnu.org/install/>`_
-    - `make <https://www.gnu.org/>` _
+    - `make <https://www.gnu.org/>`_
 
 
 
@@ -31,7 +31,6 @@ To install the above mentioned build tools and other necessary dependencies, run
 
 .. code-block:: bash
 
-  sudo apt update
   sudo apt-get install libzmq3-dev libboost-all-dev cmake gcc g++ make git pkg-config libfftw3-dev libmbedtls-dev libsctp-dev libyaml-cpp-dev libgtest-dev
 
 
@@ -42,12 +41,10 @@ To clone the Soft-Tester UE repository, run the following:
 
 .. code-block:: bash
 
-   git clone https://github.com/oran-testing/ran-tester-ue
-   cd ran-tester-ue
-   git submodule update --init --recursive
+   git clone --recurse-submodules https://github.com/oran-testing/ran-tester-ue
 
 
-3. Building the Code-Base (UE)
+3. Building the RAN Tester UE
 ------------------------------
 
 To build the code-base, run the following:
