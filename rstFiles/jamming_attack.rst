@@ -16,7 +16,7 @@ In our system, we have currently implemented Spot Jamming, where all malicious t
 Adding to your test
 ------------------
 
-In your controller config, located in docker/controller/configs/ add the following to the processes list:
+In your controller config, located in ``docker/controller/configs/`` add the following to the processes list:
 
 .. code-block:: yaml
 
@@ -32,7 +32,7 @@ Attack Metrics
 - UE detach
 
 Start Security Test
------------
+--------------------
 
 The following will run a jammer and UE with the requested environment, writing all data to InfluxDB and displaying metrics in real-time with Grafana:
 

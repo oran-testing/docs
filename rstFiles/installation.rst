@@ -6,13 +6,6 @@ Baremetal (Native) Installation Guide
 
     RAN tester UE is designed to run on Ubuntu and is tested on Ubuntu 24.04.
 
-
-The following steps outline the process to download and build the RAN Tester UE:
-
-1. Install necessary dependencies
-2. Clone the repository
-3. Build the UE
-
 1. Required Build Tools and Dependencies
 ----------------------------------------
 
@@ -27,8 +20,6 @@ The srsRAN UE system has the following necessary dependencies:
 
 
 
-To install the above mentioned build tools and other necessary dependencies, run the following:
-
 .. code-block:: bash
 
   sudo apt-get install libzmq3-dev libboost-all-dev cmake gcc g++ make git pkg-config libfftw3-dev libmbedtls-dev libsctp-dev libyaml-cpp-dev libgtest-dev
@@ -37,7 +28,7 @@ To install the above mentioned build tools and other necessary dependencies, run
 2. Cloning the repository
 -------------------------
 
-To clone the Soft-Tester UE repository, run the following:
+To clone the RAN Tester UE repository, run the following:
 
 .. code-block:: bash
 
@@ -48,14 +39,16 @@ To clone the Soft-Tester UE repository, run the following:
 ------------------------------
 
 To build the code-base, run the following:
+=======
+Then run cmake to install (Linux only):
 
 .. code-block:: bash
 
    cd ran-tester-ue
-   mkdir -p build
+   mkdir build
    cd build
-   cmake ..
-   make -j$(nproc)
+   cmake ../
+   make -j $(nproc)
 
 
 Testing against a RAN
@@ -64,14 +57,13 @@ Testing against a RAN
 Go to srsRAN's documentation and follow their tutorial for setting up a gNB, with either ZMQ or UHD. Use the configs from the ran-tester-ue repository, since they are tested to work with our 
 modified UE.
 
-- ZMQ configuration files can be found in ran-tester-ue/configs/zmq and UHD configuration files can be found in ran-tester-ue/configs/uhd/multi_ue
+- ZMQ configuration files can be found in ran-tester-ue/configs/zmq and UHD configuration files can be found in ``ran-tester-ue/configs/uhd/multi_ue``.
 
 .. NOTE::
 
   Use our subscriber_db.csv file in ran-tester-ue/configs for Open5GS. We recommend the docker compose version. Copy the file to docker/open5gs and modify open5gs.env
 
-
-Once the RAN is configured correctly run the ue with the following:
+Once the RAN is configured correctly, run the UE with the following:
 
 .. code-block:: bash
 
