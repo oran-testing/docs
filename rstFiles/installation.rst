@@ -22,7 +22,7 @@ The srsRAN UE system has the following necessary dependencies:
 
 .. code-block:: bash
 
-  sudo apt-get install libzmq3-dev libboost-all-dev cmake gcc g++ make git pkg-config libfftw3-dev libmbedtls-dev libsctp-dev libyaml-cpp-dev libgtest-dev
+  sudo apt-get install cmake gcc g++ make libzmq3-dev libboost-all-dev libuhd-dev uhd-host pkg-config libfftw3-dev libmbedtls-dev libsctp-dev libyaml-cpp-dev libgtest-dev
 
 
 2. Cloning the repository
@@ -39,8 +39,6 @@ To clone the RAN Tester UE repository, run the following:
 ------------------------------
 
 To build the code-base, run the following:
-=======
-Then run cmake to install (Linux only):
 
 .. code-block:: bash
 
