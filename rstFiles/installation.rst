@@ -47,6 +47,8 @@ To build the code-base, run the following:
    cd build
    cmake ../
    make -j $(nproc)
+   sudo make install
+   sudo ldconfig
 
 
 Testing against a RAN
