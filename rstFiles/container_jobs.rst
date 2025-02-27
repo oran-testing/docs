@@ -1,5 +1,5 @@
 Architecture Overview
-===================
+======================
 
 Controller
 ----------
