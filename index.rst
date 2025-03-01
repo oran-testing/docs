@@ -33,9 +33,9 @@ Our team will respond to any issues as quickly as possible. We appreciate any fe
    :maxdepth: 1
    :caption: Attacks
 
-   Jamming <rstFiles/jamming_attack>
-   RACH flooding <rstFiles/rach_flood_attack>
-   RRC fuzzing <rstFiles/rrc_fuzz_attack>
+   Jamming <attacks/jamming_attack>
+   RACH flooding <attacks/rach_flood_attack>
+   RRC fuzzing <attacks/rrc_fuzz_attack>
    Sniffing <attacks/5g_sniffer>
 
 .. toctree::
