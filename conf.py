@@ -65,8 +65,16 @@ html_context = {
             "https://github.com/oran-testing/ran-tester-ue",
         ),
         (
+            '<i class="fa fa-youtube fa-fw"></i> YouTube',
+            "https://www.youtube.com/@rantesterue",
+        ),
+        (
             '<i class="fa fa-bug fa-fw"></i> Report an issue',
             "https://github.com/oran-testing/ran-tester-ue/issues",
+        ),
+        (
+            '<i class="fa fa-envelope fa-fw"></i> Mailing List',
+            "https://groups.google.com/g/ran-tester-ue",
         ),
     ],
 }
