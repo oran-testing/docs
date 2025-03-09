@@ -1,8 +1,8 @@
 Message Types
-===============
+=============
 
 RRC (Radio Resource Control)
-------------------------------
+----------------------------
 - RRCSetupRequest: Sent by the UE to initiate the setup of an RRC connection.
 - RRCSetup: Sent by the gNB to the UE to proceed with the RRC connection setup.
 - RRCSetupComplete: Sent by the UE to the gNB to indicate that the RRC connection setup is complete.
@@ -15,7 +15,7 @@ RRC (Radio Resource Control)
 - RRCConnectionSetupFailure: Sent by the UE to indicate that the setup process failed.
 
 NAS (Non-Access Stratum)
----------------------------
+------------------------
 - AttachRequest: Sent by the UE to attach to the network.
 - AttachAccept: Sent by the core network to accept the attach request.
 - AttachReject: Sent by the core network to reject the attach request.
@@ -34,30 +34,31 @@ NAS (Non-Access Stratum)
 - BearerResourceReleaseResponse: Sent by the UE to acknowledge bearer resource release.
 
 MAC (Medium Access Control)
---------------------------------
+---------------------------
 - Scheduling Request: Sent by the UE to request uplink resources.
 - Downlink Control Information (DCI): Sent by the gNB to provide scheduling information for downlink/uplink data.
 - Uplink Data: User data sent by the UE to the gNB.
 - Downlink Data: User data sent by the gNB to the UE.
+
 RLC (Radio Link Control)
--------------------------
+------------------------
 - Data: Carries user and control data between the UE and the gNB.
 - Status: Used for acknowledgment of received data or status reporting.
 
 PDCP (Packet Data Convergence Protocol)
-----------------------------------------
+---------------------------------------
 - Data: Carries user data between the UE and gNB, including security and header compression.
 - Status Report: Reports on the status of data delivery.
 
 Physical Layer Messages
-------------------------
+-----------------------
 - PDCCH (Physical Downlink Control Channel): Carries control information for scheduling downlink/uplink resources.
 - PDSCH (Physical Downlink Shared Channel): Carries user data in the downlink direction.
 - PUCCH (Physical Uplink Control Channel): Carries control information in the uplink direction.
 - PUSCH (Physical Uplink Shared Channel): Carries user data in the uplink direction.
 
 Handover Messages
---------------------
+-----------------
 - HandoverRequest: Sent by the target gNB to the source gNB to request handover information.
 - HandoverRequestAcknowledge: Sent by the source gNB to the target gNB with the necessary handover information.
 - HandoverCommand: Sent by the target gNB to the UE to initiate the handover process.

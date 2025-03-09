@@ -1,8 +1,8 @@
 Software Tester UE
-===================
+==================
 
 Overview
----------
+--------
 
 The tester UE can be used on its own or with the python controller and
 GUI.
@@ -61,7 +61,7 @@ Run an srsRAN gNB and Open5GS, then send metrics to the ue_controller
 
 
 Configuring the UE
--------------------
+------------------
 
 The UE controller reads a yaml config file with the following options:
 

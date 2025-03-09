@@ -36,7 +36,7 @@ To clone the RAN Tester UE repository, run the following:
 
 
 3. Building the RAN Tester UE
-------------------------------
+-----------------------------
 
 To build the code-base, run the following:
 
@@ -48,13 +48,12 @@ To build the code-base, run the following:
    cmake ../
    make -j $(nproc)
    sudo make install
-   sudo ldconfig
 
 
 Testing against a RAN
-----------------------
+---------------------
 
-Go to srsRAN's documentation and follow their tutorial for setting up a gNB, with either ZMQ or UHD. Use the configs from the ran-tester-ue repository, since they are tested to work with our 
+Go to `srsRAN's documentation <https://docs.srsran.com/projects/project/en/latest/index.html>`_ and follow their tutorial for setting up a gNB, with either ZMQ or UHD. Use the configs from the ran-tester-ue repository, since they are tested to work with our 
 modified UE.
 
 - ZMQ configuration files can be found in ran-tester-ue/configs/zmq and UHD configuration files can be found in ``ran-tester-ue/configs/uhd/multi_ue``.
@@ -62,10 +61,4 @@ modified UE.
 .. NOTE::
 
   Use our subscriber_db.csv file in ran-tester-ue/configs for Open5GS. We recommend the docker compose version. Copy the file to docker/open5gs and modify open5gs.env
-
-Once the RAN is configured correctly, run the UE with the following:
-
-.. code-block:: bash
-
-   sudo rtue configs/zmq/ue_zmq.conf
 

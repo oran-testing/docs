@@ -1,13 +1,13 @@
 Sniffing Attack
-=================
+===============
 
-.. note:: 
+.. note::
 
-This attack is based on an open-source sniffer tool: `Spritelab 5G Sniffer <https://github.com/spritelab/5GSniffer>`_.
+   This attack is based on an open-source sniffer tool: `Spritelab 5G Sniffer <https://github.com/spritelab/5GSniffer>`_.
 
 
 Introduction
--------------
+------------
 
 5GSniffer is an open-source tool that decodes the Physical Downlink Control Channel (PDCCH) of 5G base stations, revealing Downlink Control Information (DCI) and Radio Network Temporary Identifiers (RNTI).
 It overcomes 5G-specific challenges, such as decoding encrypted information, and is optimized for efficiency.
@@ -42,14 +42,14 @@ The number of PRBs and subcarrier offset were determined by running the brute-fo
 
 
 How to run
------------
+----------
 
 .. code:: bash
 
     ./build/src/5gsniffer ./5g_MSU_sniffer.toml
 
 Output
---------
+------
 
 .. image:: /images/5g_sniffer/sniffer_output.png
 

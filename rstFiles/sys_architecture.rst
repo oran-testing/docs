@@ -1,5 +1,5 @@
 System Architecture
-====================
+===================
 
 The main components of the system architecture are the controller, the GUI (Grafana), InfluxDB, Controller, Jammer, and modified srsUE.
 

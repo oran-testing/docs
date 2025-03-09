@@ -21,9 +21,8 @@ year = str(date.today().year)
 
 project = u'RAN Tester UE'
 copyright = u'{}, RAN Tester UE'.format(year)
-author = u'Joshua J. Moore'
+author = u'RAN Tester UE'
 release = '1.0'
-
 
 sys.path.insert(0, os.path.abspath('.'))
 
@@ -32,6 +31,7 @@ extensions = [
     'sphinx.ext.viewcode',
     'sphinx_copybutton',
     'hoverxref.extension',
+    'sphinx_tabs.tabs',
 ]
 
 hoverxref_auto_ref = True

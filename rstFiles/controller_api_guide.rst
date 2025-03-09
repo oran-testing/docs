@@ -1,7 +1,7 @@
 .. _monitor_thread_api:
 
 RAN Tester UE Controller API Guide
-===================================
+==================================
 
 What is the Controller API for?
 -------------------------------

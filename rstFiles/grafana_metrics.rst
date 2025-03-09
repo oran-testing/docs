@@ -2,7 +2,7 @@ Metrics from Grafana
 ====================
 
 Current Metrics
-----------------
+---------------
 
 The metrics that are currently displayed using Grafana are:
 

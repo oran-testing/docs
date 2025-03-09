@@ -6,8 +6,7 @@ Dependencies
 
 The RAN tester UE system has the following necessary dependencies. Please install them beforehand.
 
-    - `docker <https://docs.docker.com/engine/install/>`_
-    - `docker compose <https://docs.docker.com/compose/install/>`_
+    - `Docker <https://docs.docker.com/engine/install/ubuntu/>`_
     - `UHD <https://files.ettus.com/manual/page_install.html>`_
 
 
@@ -24,9 +23,19 @@ First, clone the core repository and its submodules:
 
 Then build the necessary containers:
 
-.. code-block:: bash
+.. tabs::
 
-   cd docker && sudo docker compose build
+    .. tab:: Build
+
+        .. code-block:: bash
+
+            cd docker && sudo docker compose build
+
+    .. tab:: Pull (Preferred)
+
+        .. code-block:: bash
+
+            cd docker && sudo docker compose pull
 
 
 Configure Security Test
@@ -69,5 +78,6 @@ The following will run a jammer and UE with the requested environment, writing a
 
    sudo docker compose up influxdb grafana controller
 
-The Grafana dashboard can be found at `http://localhost:3300`
+The Grafana dashboard can be found at `http://localhost:3300 <http://localhost:3300>`_.
+
 

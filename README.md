@@ -1,31 +1,48 @@
-# RAN Tester UE Documentation
+# RAN Tester UE Docs
 
-Documentation for the RAN tester UE software system - visit [docs.rantesterue.org](https://docs.rantesterue.org)
+Documentation for RAN tester UE, a 5G security analysis tool.
 
 # Local Installation
 
 The docs require multiple sphinx extensions.
 
-On Ubuntu, they can be installed with:
+On Ubuntu, they can be installed by first setting up a virtual environment with the following commands within the docs project: 
+```
+apt install python3.10-venv
+python -m venv .venv
+```
+
+Then run
+```
+source .venv/bin/activate
+```
+
+You can then install the necessary requirements using:
 
 ```
-sudo apt install python3-pip
-pip3 install -r requirements.txt
+pip install -r requirements.txt
 ```
 
-Once these are installed, you can download and build the docs with the following:
+Once all dependencies are installed, you can download and build the docs with the following commands: 
 
 ```
-git clone https://github.com/oran-testing/docs
-cd docs
+git clone https://github.com/oran-testing/docs.git
+cd docs/
 make html
 ```
 
-Then you can make a server in the build directory with this command:
+Then, navigate to the output directory where the HTML files are generated:
 
 ```bash
 cd _build/html
 python3 -m http.server 8080
 ```
 
-Then visit http://localhost:8080 in your browser
+This will start a server at http://localhost:8080/ which can be viewed in your browser, any changes to the docs will be shown here once saved. 
+
+
+After finishing your work, deactivate the virtual environment by running:
+```
+deactivate
+```
+
