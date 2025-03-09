@@ -1,14 +1,14 @@
 PDCP message Parroting Attack
-==============================
+=============================
 
 Implementation (independent)
--------------------------------
+----------------------------
 
 - Capture user plane messages from the UE as a byte buffer
 - Repeatedly send the same messages to the RAN at random intervals
 
 Mitigation (UE and gNB)
-------------------------
+-----------------------
 
 - Use of sequence numbers and timestamps in PDCP headers
 

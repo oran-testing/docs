@@ -1,8 +1,8 @@
 CQI Manipulation Attack
-=====================================================
+=======================
 
 Implementation (UE Side)
---------------------------
+------------------------
 - **Override CQI**: Implement code to consistently send high CQI values
 
 - **Monitoring Impact**:
@@ -10,7 +10,7 @@ Implementation (UE Side)
    - **Assess Network Impact**: Evaluate the effects on other users and overall network performance
 
 Mitigation Components in srsRAN gNB under Test
-------------------------------------------------
+----------------------------------------------
 1. **Proportional Fair Scheduling (PFS)**:
     - **Balance Allocation**: Distributes resources considering both channel quality and historical throughput
     - **Limit Impact**: Adjusts allocation based on actual performance to mitigate exaggerated CQI effects
@@ -28,7 +28,7 @@ Mitigation Components in srsRAN gNB under Test
     - **Rate Limiting**: Implements rate limiting to ensure fair resource distribution
 
 Metrics to Assess the Attack
-------------------------------
+----------------------------
 1. **Bandwidth Utilization**:
     - **Throughput Measurement**: Quantify throughput allocated to the modified UE
     - **Bandwidth Consumption**: Track the percentage of total network bandwidth used by the UE
@@ -42,6 +42,6 @@ Metrics to Assess the Attack
     - **System Performance**: Assess the impact on network CPU and memory usage due to increased load
 
 Notes
-------
+-----
 - **Development Branch**: `cqi_attack_development <https://github.com/oran-testing/soft-t-ue/tree/cqi_attack_development>`_
 

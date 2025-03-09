@@ -1,8 +1,8 @@
 Signaling Storm Injection Attack
-=====================================================
+================================
 
 Implementation (UE Side)
---------------------------
+------------------------
 1. **Custom Firmware/Software**: 
     - **Gain Acess**: Root or administrative access to modify UE firmware/software.
     - **Flood Signaling Messages**:
@@ -19,12 +19,12 @@ Implementation (UE Side)
 
 
 Mitigation Components in srsRAN gNB
-------------------------------------------------
+-----------------------------------
 
 Are there rate-limiting strategies in srsRAN gNB that can be under test?
 
 Metrics to Assess the Attack
-------------------------------
+----------------------------
 1. **Signaling Message Rate**:
     - **Rate Measurement**: Quantify the rate at which signaling messages are sent by the UE and received by the gNB.
     - **Volume Analysis**: Measure the total number of signaling messages received by the gNB over a specified period.

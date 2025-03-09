@@ -1,6 +1,6 @@
-=========================
+======================
 Title of Your Document
-=========================
+======================
 
 Introduction
 ============
@@ -8,7 +8,7 @@ Introduction
 Welcome to your document! This is a placeholder file to help you get started with reStructuredText.
 
 Contents
-=========
+========
 
 1. Section 1
 2. Section 2
@@ -32,21 +32,21 @@ This is the content for Section 3. Include any additional details or information
 Figures
 =======
 
-.. figure:: path/to/your/image.png
-   :alt: Description of the image
-
-   Caption for the figure.
+#.. figure:: (path/to/your/image.png)
+#   :alt: Description of the image
+#
+#   Caption for the figure.
 
 Tables
 ======
 
-+-----------+-----------+
-| Header 1  | Header 2  |
-+===========+===========+
++--------------+--------------+
+| Header 1     | Header 2     |
++==============+==============+
 | Row 1, Col 1 | Row 1, Col 2 |
-+-----------+-----------+
++--------------+--------------+
 | Row 2, Col 1 | Row 2, Col 2 |
-+-----------+-----------+
++--------------+--------------+
 
 Code Blocks
 ===========

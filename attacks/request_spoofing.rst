@@ -1,8 +1,8 @@
 RRC Release Request Spoofing
-==============================
+============================
 
 Implementation (independent)
--------------------------------
+----------------------------
 
 - Listen for connected UEs on the network
 - Decrypt incoming messages
@@ -10,7 +10,7 @@ Implementation (independent)
 - Send the message to the gNB
 
 Mitigation (UE and gNB)
-------------------------
+-----------------------
 
 - Message validation
 - Checksums

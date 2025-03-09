@@ -1,8 +1,8 @@
 SDU Fuzzing Attack
-==============================
+==================
 
 Introduction 
--------------
+------------
 This attack randomly changes values in the SDU buffer of the RRC then sends the buffer to the gNB to cause malfunction.
 
 The fuzzing attack we currently have is limited in its application since all the fuzzing being done is entirely random. There are a few ways this can be fixed in the implementation:

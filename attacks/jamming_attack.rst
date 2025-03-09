@@ -1,5 +1,5 @@
 Jamming Attack
-==========================================================
+===============
 
 Introduction
 -------------
@@ -14,7 +14,7 @@ Currently, there are 4 main jamming methods `[1] <https://ieeexplore.ieee.org/st
 In our system, we have currently implemented Spot Jamming, where all malicious transmission power is directed at a single frequency used by the target, utilizing the same modulation and sufficient power to override the original signal.
 
 Adding to your test
-------------------
+-------------------
 
 In your controller config, located in ``docker/controller/configs/`` add the following to the processes list:
 
@@ -25,14 +25,14 @@ In your controller config, located in ``docker/controller/configs/`` add the fol
       config_file: "configs/basic_jammer.yaml"
  
 Attack Metrics
-----------------
+--------------
 - Inability of UEs to connect
 - Low channel quality
 - gNB overload /crash
 - UE detach
 
 Start Security Test
---------------------
+-------------------
 
 The following will run a jammer and UE with the requested environment, writing all data to InfluxDB and displaying metrics in real-time with Grafana:
 
