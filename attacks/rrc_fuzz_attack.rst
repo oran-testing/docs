@@ -33,7 +33,7 @@ The following will run a UE fuzzer with the requested environment, writing all d
 
 .. code-block:: bash
 
-   sudo docker compose up influxdb grafana controller
+   sudo docker compose --profile system up
 
 The Grafana dashboard can be found at `http://localhost:3300`
 

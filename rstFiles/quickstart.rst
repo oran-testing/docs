@@ -17,56 +17,53 @@ First, clone the core repository and its submodules:
 
 .. code-block:: bash
 
-   git clone https://github.com/oran-testing/ran-tester-ue
-   cd ran-tester-ue
-   git submodule update --init --recursive
+   git clone --recurse-submodules https://github.com/oran-testing/ran-tester-ue
 
 Then build the necessary containers:
 
-.. tabs::
+Run this to pull images for the **components** profile defined in ``~/docker-compose.yaml``, which includes rtUE, Jammer, Uu agent, and sniffer.
 
-    .. tab:: Build
+.. code-block:: bash
+    
+   cd ~/ran-tester-ue 
+   sudo docker compose --profile components pull
 
-        .. code-block:: bash
+Now, run this to pull images for the **system** profile, which includes Grafana, InfluxDB, and Controller.
 
-            cd docker && sudo docker compose build
+.. code-block:: bash
 
-    .. tab:: Pull (Preferred)
-
-        .. code-block:: bash
-
-            cd docker && sudo docker compose pull
-
+   sudo docker compose --profile system pull
 
 Configure Security Test
 -----------------------
 
-The environment is defined in the controller config (`ran-tester-ue/docker/controller/configs`):
+The default environment is defined in the controller configuration file located at ``ran-tester-ue/configs/default.yaml``:
 
 .. code-block:: yaml
 
-   processes: # REQUIRED: a list of all processes to start
-     - type: "srsue" # REQUIRED: the name of the subprocess class
-       config_file: "configs/zmq/ue_zmq_docker.conf" # OPTIONAL: the path to a config file in the subprocess container
-       args: "--rrc.sdu_fuzzed_bits 1 --rrc.fuzz_target_message 'rrcSetupRequest'" # OPTIONAL: arguments to pass to the subprocess container
+    processes: # List of all processes to start
+    - type: "rtue"
+        id: "rtue_uhd_1"
+        config_file: "configs/uhd/ue_uhd.conf" # path to the configuration file for the rtUE
+        rf:
+        type: "b200" # Type of RF device (=USRP B210)
+        images_dir: "/usr/share/uhd/images/" # Directory for RF images
 
-     - type: "jammer"
-       config_file: "configs/basic_jammer.yaml"
-
-   influxdb: # OPTIONAL: (but recommended for metrics collection) config for InfluxDB
-       influxdb_host: ${DOCKER_INFLUXDB_INIT_HOST} # REQUIRED: The IP or HOSTNAME of InfluxDB container
-       influxdb_port: ${DOCKER_INFLUXDB_INIT_PORT} # REQUIRED: The port of the InfluxDB service
-       influxdb_org: ${DOCKER_INFLUXDB_INIT_ORG} # REQUIRED: The org of the InfluxDB service
-       influxdb_token: ${DOCKER_INFLUXDB_INIT_ADMIN_TOKEN} # REQUIRED: The admin token of the InfluxDB service
-
-   data_backup: # OPTIONAL: configure automatic data backups
-       backup_every: 1000 # REQUIRED: Backup data interval in seconds
-       backup_dir: test # OPTIONAL: directory to output data
-       backup_since: -1d # OPTIONAL: backup starting from
+    - type: "sniffer"
+        id: "dci_sniffer_1"
+        config_file: "../5g-sniffer/MSU-Private5G184205.toml" # Path to the configuration file for the sniffer
+        rf:
+        type: "b200"
+        images_dir: "/usr/share/uhd/images/"
 
 .. note::
 
-   The config used by the controller is defined in `ran-tester-ue/docker/.env` as `DOCKER_CONTROLLER_INIT_CONFIG`.
+   The config used by the controller is defined in ``ran-tester-ue/.env`` as **DOCKER_CONTROLLER_INIT_CONFIG**.
+
+    .. code-block:: yaml
+
+        # This points to a configuration on the host machine
+        DOCKER_CONTROLLER_INIT_CONFIG=configs/default.yaml
 
 
 Start Security Test
@@ -76,7 +73,7 @@ The following will run a jammer and UE with the requested environment, writing a
 
 .. code-block:: bash
 
-   sudo docker compose up influxdb grafana controller
+   sudo docker compose --profile system up
 
 The Grafana dashboard can be found at `http://localhost:3300 <http://localhost:3300>`_.
 

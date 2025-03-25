@@ -38,7 +38,7 @@ The following will run a jammer and UE with the requested environment, writing a
 
 .. code-block:: bash
 
-   sudo docker compose up influxdb grafana controller
+   sudo docker compose --profile system up
 
 The Grafana dashboard can be found at `http://localhost:3300`
 

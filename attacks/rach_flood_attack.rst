@@ -45,7 +45,7 @@ The following will run the RACH flooding attack with the requested environment, 
 
 .. code-block:: bash
 
-   sudo docker compose up influxdb grafana controller
+   sudo docker compose --profile system up
 
 The Grafana dashboard can be found at `http://localhost:3300`
 
