@@ -28,32 +28,7 @@ In your controller config, located in ``ran-tester-ue/configs/``, add the follow
             type: "b200"
             images_dir: "/usr/share/uhd/images/"
 
-The config file for the Sniffer will be located in its submodule at ``ran-tester-ue/5g-sniffer/(config.toml)``:
-
-.. code-block:: toml
-
-    [sniffer]
-    file_path = "/home/oran-testbed/5g-sniffer/iq_1842MHz_pdcch_traffic.fc32"
-    sample_rate = 23040000
-    frequency = 1842500000
-    nid_1 = 1
-    ssb_numerology = 0
-    #rf_args = "type=b200,master_clock_rate=23.04e6"
-
-    [[pdcch]]
-    coreset_id = 1
-    subcarrier_offset = 426
-    num_prbs = 30
-    numerology = 0
-    dci_sizes_list = [41]
-    scrambling_id_start = 1
-    scrambling_id_end = 10
-    rnti_start = 17921
-    rnti_end = 17930
-    interleaving_pattern = "non-interleaved"
-    coreset_duration = 1
-    AL_corr_thresholds = [1, 0.5, 0.5, 1, 1]
-    num_candidates_per_AL = [0, 4, 4, 0, 0]
+The config file for the Sniffer will be located in its submodule at ``ran-tester-ue/5g-sniffer/(config.toml)``.
 
 
 Configuration Reference
@@ -63,7 +38,7 @@ All configuration parameters are presented here below in the following format:
 
 .. code-block:: yaml
 
-    parameter: Parameter description
+    parameter: <default value>  # Parameter description
 
 .. literalinclude:: .config/sniffer_ref.yml
     :language: yaml
@@ -91,4 +66,3 @@ The following will run the Sniffer and UE with the requested environment, writin
    sudo docker compose --profile system up
 
 The Grafana dashboard can be found at `http://localhost:3300 <http://localhost:3300>`_.
-
