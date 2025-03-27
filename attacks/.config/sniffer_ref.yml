@@ -1,0 +1,19 @@
+[sniffer]
+file_path: "/home/oran-testbed/5g-sniffer/iq_1842MHz_pdcch_traffic.fc32"  # specifies the path to a spectrum recording file
+sample_rate: 23040000                                                     # specifies recording or operational sampling rate for the SDR
+frequency: 1842500000                                                     # specifies the center frequency used for the SDR operation
+nid_1: 1                                                                  # specifies the N_ID_1 parameter from cell ID
+ssb_numerology: 0                                                         # specifies numerology for the SSB block (0 for 15 kHz, 1 for 30 kHz)
+
+[pdcch]
+coreset_id: 1                                   # specifies the identifier of the CORESET (Control Resource Sets)
+subcarrier_offset: 426                          # specifies subcarrier shift needed to center CORESET relative to SSB
+num_prbs: 30                                    # indicates the number of PRBs used for PDCCH (corresponds tp "frequencyDomainResources" in RRC)
+numerology: 0                                   # indicates numerology (0,1,2) defining subcarrier spacing and slot configuration
+dci_sizes_list: [41]                            # indicates DCI sizes to decode (up to 4 per cell)
+scrambling_id_start & scrambling_id_end: 1, 10   # specifies the range of the PDCCH scrambling ID we want to sniff
+rnti_start & rnti_end: 17921, 17930              # specifies the range of RNTIs we want to sniff
+interleaving_pattern: "non-interleaved"         # indicates the interleaving pattern used (corresponds to "cce-REG-MappingType" in RRC)
+coreset_duration: 1                             # indicates how many OFDM symbols are used for CORESET (corresponds to “duration” in RRC)
+AL_corr_thresholds: [1, 0.5, 0.5, 1, 1]         # indicates correlation threshold for each aggregation level to decode a DCI. Lowering the value increases decoding speed but also the chance of missing DCIs
+num_candidates_per_AL: [0, 4, 4, 0, 0]          # number of candidates the sniffer should look for per aggregation level (corresponds to "nrofCandidates" in RRC)

@@ -23,7 +23,29 @@ In your controller config, located in ``docker/controller/configs/`` add the fol
    processes:
     - type: "jammer"
       config_file: "configs/basic_jammer.yaml"
+<<<<<<< Updated upstream
  
+=======
+      rf:
+         type: "b200"
+         images_dir: "/usr/share/uhd/images/"
+
+The config file for Jammer will be located in its submodule at ``ran-tester-ue/jammer/(config.yaml)``:
+
+Configuration Reference
+***********************
+
+All configuration parameters are presented here below in the following format:
+
+.. code-block:: yaml
+
+    parameter: <default value>   # Parameter description
+
+.. literalinclude:: .config/jammer_ref.yml
+    :language: yaml
+
+
+>>>>>>> Stashed changes
 Attack Metrics
 --------------
 - Inability of UEs to connect

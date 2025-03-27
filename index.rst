@@ -15,9 +15,9 @@ This RAN tester UE (rtUE) is fully software-based and compatible with widely ava
 Getting Help
 ------------
 
-This project is still in development, if you find any issues please create a github issue on our github `ran-tester-ue <https://github.com/oran-testing/ran-tester-ue>`_
+This project is still in development. If you find any issues, please create a GitHub issue on our repository: `ran-tester-ue <https://github.com/oran-testing/ran-tester-ue>`_
 
-Our team will respond to any issues as quickly as possible. We appreciate any feedback as we add to our documentation.
+Our team will respond to any issues as quickly as possible. We appreciate any feedback as we continue to add to our documentation.
 
 
 .. toctree::

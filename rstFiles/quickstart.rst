@@ -23,7 +23,11 @@ First, clone the core repository and its submodules:
 
 Then build the necessary containers:
 
+<<<<<<< Updated upstream
 .. tabs::
+=======
+Run this to pull images for the **components** profile defined in ``ran-tester-ue/docker-compose.yaml``, which includes rtUE, Jammer, Uu agent, and Sniffer.
+>>>>>>> Stashed changes
 
     .. tab:: Build
 
@@ -45,6 +49,7 @@ The environment is defined in the controller config (`ran-tester-ue/docker/contr
 
 .. code-block:: yaml
 
+<<<<<<< Updated upstream
    processes: # REQUIRED: a list of all processes to start
      - type: "srsue" # REQUIRED: the name of the subprocess class
        config_file: "configs/zmq/ue_zmq_docker.conf" # OPTIONAL: the path to a config file in the subprocess container
@@ -63,6 +68,22 @@ The environment is defined in the controller config (`ran-tester-ue/docker/contr
        backup_every: 1000 # REQUIRED: Backup data interval in seconds
        backup_dir: test # OPTIONAL: directory to output data
        backup_since: -1d # OPTIONAL: backup starting from
+=======
+    processes:                                                  # list of all processes to start
+    - type: "rtue"
+        id: "rtue_uhd_1"
+        config_file: "configs/uhd/ue_uhd.conf"                  # path to the configuration file for the rtUE
+        rf:
+            type: "b200"                                        # type of RF device (= USRP B210)
+            images_dir: "/usr/share/uhd/images/"                # directory for RF images
+
+    - type: "sniffer"
+        id: "dci_sniffer_1"
+        config_file: "../5g-sniffer/MSU-Private5G184205.toml"   # path to the configuration file for the sniffer
+        rf:
+            type: "b200"
+            images_dir: "/usr/share/uhd/images/"
+>>>>>>> Stashed changes
 
 .. note::
 
