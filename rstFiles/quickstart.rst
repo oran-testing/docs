@@ -46,15 +46,15 @@ The default environment is defined in the controller configuration file located 
         id: "rtue_uhd_1"
         config_file: "configs/uhd/ue_uhd.conf" # path to the configuration file for the rtUE
         rf:
-        type: "b200" # Type of RF device (=USRP B210)
-        images_dir: "/usr/share/uhd/images/" # Directory for RF images
+            type: "b200" # Type of RF device (=USRP B210)
+            images_dir: "/usr/share/uhd/images/" # Directory for RF images
 
     - type: "sniffer"
         id: "dci_sniffer_1"
         config_file: "../5g-sniffer/MSU-Private5G184205.toml" # Path to the configuration file for the sniffer
         rf:
-        type: "b200"
-        images_dir: "/usr/share/uhd/images/"
+            type: "b200"
+            images_dir: "/usr/share/uhd/images/"
 
 .. note::
 
@@ -78,3 +78,6 @@ The following will run a jammer and UE with the requested environment, writing a
 The Grafana dashboard can be found at `http://localhost:3300 <http://localhost:3300>`_.
 
 
+
+
+all the config files should be inside the ran-tester-ue directory....

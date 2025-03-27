@@ -1,0 +1,19 @@
+[sniffer]
+file_path:      # specifies the path to a spectrum recording file
+sample_rate:    # specifies recording or operational sampling rate for the SDR
+frequency:      # specifies the center frequency used for the SDR operation
+nid_1:          # specifies the N_ID_1 parameter from cell ID
+ssb_numerology: # specifies numerology for the SSB block (0 for 15 kHz, 1 for 30 kHz)
+
+[pdcch]
+coreset_id:                                # specifies the identifier of the CORESET (Control Resource Sets)
+subcarrier_offset:                         # specifies subcarrier shift needed to center CORESET relative to SSB
+num_prbs:                                  # indicates the number of PRBs used for PDCCH (corresponds tp "frequencyDomainResources" in RRC)
+numerology:                                # indicates numerology (0,1,2) defining subcarrier spacing and slot configuration
+dci_sizes_list:                            # indicates DCI sizes to decode (up to 4 per cell)
+scrambling_id_start and scrambling_id_end: # specifies the range of the PDCCH scrambling ID we want to sniff
+rnti_start and rnti_end:                   # specifies the range of RNTIs we want to sniff
+interleaving_pattern:                      # indicates the interleaving pattern used (corresponds to "cce-REG-MappingType" in RRC)
+coreset_duration:                          # indicates how many OFDM symbols are used for CORESET (corresponds to “duration” in RRC)
+AL_corr_thresholds:                        # indicates correlation threshold for each aggregation level to decode a DCI. Lowering the value increases decoding speed but also the chance of missing DCIs
+num_candidates_per_AL:                     # number of candidates the sniffer should look for per aggregation level (corresponds to "nrofCandidates" in RRC)

@@ -36,7 +36,8 @@ Our team will respond to any issues as quickly as possible. We appreciate any fe
    Jamming <attacks/jamming_attack>
    RACH flooding <attacks/rach_flood_attack>
    RRC fuzzing <attacks/rrc_fuzz_attack>
-   Sniffing <attacks/5g_sniffer>
+   Sniffing (old) <attacks/5g_sniffer_old>
+   Sniffing (new) <attacks/5g_sniffer_new>
 
 .. toctree::
    :maxdepth: 1
