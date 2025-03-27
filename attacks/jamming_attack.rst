@@ -63,4 +63,3 @@ The following will run a jammer and UE with the requested environment, writing a
    sudo docker compose up influxdb grafana controller
 
 The Grafana dashboard can be found at `http://localhost:3300`
-

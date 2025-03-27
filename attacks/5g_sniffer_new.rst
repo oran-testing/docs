@@ -38,7 +38,7 @@ All configuration parameters are presented here below in the following format:
 
 .. code-block:: yaml
 
-    parameter: <default value>   # Parameter description
+    parameter: <default value>  # Parameter description
 
 .. literalinclude:: .config/sniffer_ref.yml
     :language: yaml
@@ -66,4 +66,3 @@ The following will run the Sniffer and UE with the requested environment, writin
    sudo docker compose --profile system up
 
 The Grafana dashboard can be found at `http://localhost:3300 <http://localhost:3300>`_.
-

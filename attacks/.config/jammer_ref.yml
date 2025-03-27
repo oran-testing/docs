@@ -1,0 +1,10 @@
+amplitude: 1.0                  # write sth
+initial_frequency: 10.0         # write sth
+frequency_change_rate: 0.1      # write sth
+initial_phase: 0.0              # write sth
+num_samples: 1000000            # write sth
+sample_rate: 1000.0             # write sth
+output_iq_file: "output.fc32"   # write sth
+output_csv_file: "output.csv"   # write sth
+write_iq: true                  # write sth
+write_csv: true                 # write sth
