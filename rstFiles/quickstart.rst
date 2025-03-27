@@ -4,7 +4,7 @@ Quickstart Guide
 Dependencies
 ------------
 
-The RAN tester UE system has the following necessary dependencies. Please install them beforehand.
+The RAN Tester UE system has the following necessary dependencies. Please install them beforehand.
 
     - `Docker <https://docs.docker.com/engine/install/ubuntu/>`_
     - `UHD <https://files.ettus.com/manual/page_install.html>`_
@@ -19,9 +19,9 @@ First, clone the core repository and its submodules:
 
    git clone --recurse-submodules https://github.com/oran-testing/ran-tester-ue
 
-Then build the necessary containers:
+Then, build the necessary containers:
 
-Run this to pull images for the **components** profile defined in ``~/docker-compose.yaml``, which includes rtUE, Jammer, Uu agent, and sniffer.
+Run this to pull images for the **components** profile defined in ``~/docker-compose.yaml``, which includes rtUE, Jammer, Uu agent, and Sniffer.
 
 .. code-block:: bash
     
@@ -37,16 +37,16 @@ Now, run this to pull images for the **system** profile, which includes Grafana,
 Configure Security Test
 -----------------------
 
-The default environment is defined in the controller configuration file located at ``ran-tester-ue/configs/default.yaml``:
+The default environment is defined in the controller configuration file located at ``ran-tester-ue/configs/(config.yaml)``:
 
 .. code-block:: yaml
 
     processes: # List of all processes to start
     - type: "rtue"
         id: "rtue_uhd_1"
-        config_file: "configs/uhd/ue_uhd.conf" # path to the configuration file for the rtUE
+        config_file: "configs/uhd/ue_uhd.conf" # Path to the configuration file for the rtUE
         rf:
-            type: "b200" # Type of RF device (=USRP B210)
+            type: "b200" # Type of RF device (= USRP B210)
             images_dir: "/usr/share/uhd/images/" # Directory for RF images
 
     - type: "sniffer"
@@ -77,7 +77,3 @@ The following will run a jammer and UE with the requested environment, writing a
 
 The Grafana dashboard can be found at `http://localhost:3300 <http://localhost:3300>`_.
 
-
-
-
-all the config files should be inside the ran-tester-ue directory....

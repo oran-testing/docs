@@ -18,7 +18,7 @@ In our system, we have currently implemented Spot Jamming, where all malicious t
 Configuring the test
 ********************
 
-In your controller config, located in ``configs/`` add the following to the processes list:
+In your controller config, located in ``ran-tester-ue/configs/`` add the following to the processes list:
 
 .. code-block:: yaml
 
@@ -29,6 +29,20 @@ In your controller config, located in ``configs/`` add the following to the proc
       rf:
          type: "b200"
          images_dir: "/usr/share/uhd/images/"
+
+The config file for Jammer will be located in its submodule at ``ran-tester-ue/jammer/(config.yaml)``:
+
+Configuration Reference
+***********************
+
+All configuration parameters are presented here below in the following format:
+
+.. code-block:: yaml
+
+    parameter: default_value        # Parameter description
+
+.. literalinclude:: .config/jammer_ref.yml
+    :language: yaml
 
 
 Attack Metrics

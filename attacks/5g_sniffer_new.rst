@@ -16,7 +16,7 @@ It overcomes 5G-specific challenges, such as decoding encrypted information, and
 Configuring the test
 ********************
 
-In your controller config, located in ``configs/`` add the following to the processes list:
+In your controller config, located in ``ran-tester-ue/configs/``, add the following to the processes list:
 
 .. code-block:: yaml
 
@@ -28,7 +28,7 @@ In your controller config, located in ``configs/`` add the following to the proc
             type: "b200"
             images_dir: "/usr/share/uhd/images/"
 
-The config file for the Sniffer attack will be located in its submodule at ``ran-tester-ue/5g-sniffer/(config.toml)``:
+The config file for the Sniffer will be located in its submodule at ``ran-tester-ue/5g-sniffer/(config.toml)``:
 
 .. code-block:: toml
 

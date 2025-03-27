@@ -10,7 +10,7 @@ Random Radio Resource Control (RRC) fuzzing is a type of attack where random mod
 Configuring the test
 ********************
 
-The environment is defined in the controller config ``ran-tester-ue/configs``:
+In your controller config, located in ``ran-tester-ue/configs/``, add the following to the processes list:
 
 .. code-block:: yaml
 

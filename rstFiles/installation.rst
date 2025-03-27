@@ -4,7 +4,7 @@ Bare Metal (Native) Installation Guide
 
 .. note:: 
 
-    RAN tester UE is designed to run on Ubuntu and is tested on Ubuntu 24.04.
+    RAN Tester UE is designed to run on Ubuntu and is tested on Ubuntu 24.04.
 
 1. Required Build Tools and Dependencies
 ----------------------------------------

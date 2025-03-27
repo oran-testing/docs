@@ -24,7 +24,7 @@ More information on the RACH procedure can be found here: `sharetechnote <https:
 Configuring the test
 ********************
 
-In your controller config, located in ``configs/``, add the following to the processes list:
+In your controller config, located in ``ran-tester-ue/configs/``, add the following to the processes list:
 
 .. code-block:: yaml
 
