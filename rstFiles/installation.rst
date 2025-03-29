@@ -7,7 +7,7 @@ Bare Metal (Native) Installation Guide
     RAN Tester UE is designed to run on Ubuntu and is tested on Ubuntu 24.04.
 
 1. Required Build Tools and Dependencies
-----------------------------------------
+****************************************
 
 The srsRAN UE system has the following necessary dependencies:
 
@@ -26,7 +26,7 @@ The srsRAN UE system has the following necessary dependencies:
 
 
 2. Cloning the repository
--------------------------
+*************************
 
 To clone the RAN Tester UE repository, run the following:
 
@@ -36,7 +36,7 @@ To clone the RAN Tester UE repository, run the following:
 
 
 3. Building the RAN Tester UE
------------------------------
+*****************************
 
 To build the code-base, run the following:
 
@@ -51,7 +51,7 @@ To build the code-base, run the following:
 
 
 Testing against a RAN
----------------------
+*********************
 
 Go to `srsRAN's documentation <https://docs.srsran.com/projects/project/en/latest/index.html>`_ and follow their tutorial for setting up a gNB, with either ZMQ or UHD. Use the configs from the ran-tester-ue repository, since they are tested to work with our 
 modified UE.

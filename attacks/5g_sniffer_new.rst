@@ -1,3 +1,5 @@
+.. _sniffing_attack:
+
 Sniffing Attack
 ===============
 

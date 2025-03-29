@@ -37,21 +37,21 @@ Now, run this to pull images for the **system** profile, which includes Grafana,
 Configure Security Test
 -----------------------
 
-The default environment is defined in the controller configuration file located at ``ran-tester-ue/configs/(config.yaml)``:
+The default environment is defined in the controller configuration file located at ``ran-tester-ue/configs/(config.yaml)``. The config shown below is for :hoverxref:`Sniffing attack <sniffing_attack>`.
 
 .. code-block:: yaml
 
-    processes: # List of all processes to start
+    processes:                                                  # List of all processes to start
     - type: "rtue"
         id: "rtue_uhd_1"
-        config_file: "configs/uhd/ue_uhd.conf" # Path to the configuration file for the rtUE
+        config_file: "configs/uhd/ue_uhd.conf"                  # Path to the configuration file for the rtUE
         rf:
-            type: "b200" # Type of RF device (= USRP B210)
-            images_dir: "/usr/share/uhd/images/" # Directory for RF images
+            type: "b200"                                        # Type of RF device (= USRP B210)
+            images_dir: "/usr/share/uhd/images/"                # Directory for RF images
 
     - type: "sniffer"
         id: "dci_sniffer_1"
-        config_file: "../5g-sniffer/MSU-Private5G184205.toml" # Path to the configuration file for the sniffer
+        config_file: "../5g-sniffer/MSU-Private5G184205.toml"   # Path to the configuration file for the sniffer
         rf:
             type: "b200"
             images_dir: "/usr/share/uhd/images/"
