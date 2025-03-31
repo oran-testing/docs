@@ -4,7 +4,7 @@ Quickstart Guide
 Dependencies
 ------------
 
-The RAN Tester UE system has the following necessary dependencies. Please install them beforehand.
+The RAN Tester UE system has the following necessary dependencies. Please install them beforehand:
 
     - `Docker <https://docs.docker.com/engine/install/ubuntu/>`_
     - `UHD <https://files.ettus.com/manual/page_install.html>`_
@@ -19,16 +19,14 @@ First, clone the core repository and its submodules:
 
    git clone --recurse-submodules https://github.com/oran-testing/ran-tester-ue
 
-Then, build the necessary containers:
-
-Run this to pull images for the **components** profile defined in ``~/docker-compose.yaml``, which includes rtUE, Jammer, Uu agent, and Sniffer.
+Next, build the necessary containers. Run the following command to pull images for the **components** profile defined in ``~/docker-compose.yaml``, which includes rtUE, Jammer, Uu agent, and Sniffer:
 
 .. code-block:: bash
     
    cd ~/ran-tester-ue 
    sudo docker compose --profile components pull
 
-Now, run this to pull images for the **system** profile, which includes Grafana, InfluxDB, and Controller.
+Now, pull images for the **system** profile, which includes Grafana, InfluxDB, and Controller:
 
 .. code-block:: bash
 
@@ -37,7 +35,7 @@ Now, run this to pull images for the **system** profile, which includes Grafana,
 Configure Security Test
 -----------------------
 
-The default environment is defined in the controller configuration file located at ``ran-tester-ue/configs/(config.yaml)``. The config shown below is for :hoverxref:`Sniffing attack <sniffing_attack>`.
+The default environment is defined in the controller configuration file located at ``ran-tester-ue/configs/default.yaml``. The following configuration is for a :hoverxref:`Sniffing attack <sniffing_attack>`.
 
 .. code-block:: yaml
 
@@ -58,7 +56,7 @@ The default environment is defined in the controller configuration file located 
 
 .. note::
 
-   The config used by the controller is defined in ``ran-tester-ue/.env`` as **DOCKER_CONTROLLER_INIT_CONFIG**.
+   The configuration used by the controller is defined in ``ran-tester-ue/.env`` as **DOCKER_CONTROLLER_INIT_CONFIG**:
 
     .. code-block:: yaml
 
@@ -69,11 +67,11 @@ The default environment is defined in the controller configuration file located 
 Start Security Test
 -------------------
 
-The following will run a jammer and UE with the requested environment, writing all data to InfluxDB and displaying metrics in real-time with Grafana:
+The following command will run a jammer and UE with the requested environment, writing all data to InfluxDB and displaying metrics in real-time with Grafana:
 
 .. code-block:: bash
 
    sudo docker compose --profile system up
 
-The Grafana dashboard can be found at `http://localhost:3300 <http://localhost:3300>`_.
+The Grafana dashboard can be accessed at `http://localhost:3300 <http://localhost:3300>`_.
 

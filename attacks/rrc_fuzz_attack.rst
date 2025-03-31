@@ -2,15 +2,15 @@ RRC Fuzzing Attack
 ==================
 
 Introduction
-************
+------------
 
-Random Radio Resource Control (RRC) fuzzing is a type of attack where random modifications are made to the values within the Service Data Unit (SDU) buffer of the RRC layer. After altering these values, the corrupted buffer is sent to the gNB (next-generation Node B). The goal of this process is to exploit potential vulnerabilities in the gNB's handling of RRC messages, potentially causing system malfunctions or unexpected behavior.
+Radio Resource Control (RRC) fuzzing involves random modifications to values within the Service Data Unit (SDU) buffer at the RRC layer. The altered buffer is sent to the gNodeB (gNB) to exploit potential vulnerabilities, potentially causing system malfunctions or unexpected behavior.
 
+Configuring the Test
+--------------------
 
-Configuring the test
-********************
-
-In your controller config, located in ``ran-tester-ue/configs/``, add the following to the processes list:
+**Controller Configuration:**
+Add the following to the `processes` list in the controller configuration located at ``ran-tester-ue/configs/default.yaml``:
 
 .. code-block:: yaml
 
@@ -25,21 +25,20 @@ In your controller config, located in ``ran-tester-ue/configs/``, add the follow
 
 
 Attack Metrics
-**************
+--------------
 
-- gNB overload /crash
-- Detach existing UEs
+- gNB overload or crash
+- UE detach events
 - Discovery of buffer overflow vulnerabilities
 
 
-Start Security Test
-*******************
+Running the Test
+----------------
 
-The following will run a UE fuzzer with the requested environment, writing all data to InfluxDB and displaying metrics in real-time with Grafana:
+Start the fuzzing attack in the requested environment with real-time metrics displayed in Grafana:
 
 .. code-block:: bash
 
    sudo docker compose --profile system up
 
-The Grafana dashboard can be found at `http://localhost:3300 <http://localhost:3300>`_.
-
+Access Grafana dashboard at `http://localhost:3300 <http://localhost:3300>`_.

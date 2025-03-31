@@ -2,23 +2,22 @@ Jamming Attack
 ===============
 
 Introduction
-************
+------------
 
 Jamming is the intentional disruption of a wireless signal by transmitting a strong interference on the same frequency, blocking or degrading the intended communication.
-Currently, there are 4 main jamming methods `[1] <https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=5343062>`_ :
+The primary jamming methods are:
 
-1. Spot Jamming
+1. Spot Jamming (implemented in this system)
 2. Sweep Jamming
 3. Barrage Jamming
 4. Deceptive Jamming
 
-In our system, we have currently implemented Spot Jamming, where all malicious transmission power is directed at a single frequency used by the target, utilizing the same modulation and sufficient power to override the original signal.
+**Spot jamming** is a type of noise jamming where a jammer concentrates its power on a single frequency, aiming to disrupt communication or radar systems operating on that specific frequency.
 
-
-Configuring the test
-********************
-
-In your controller config, located in ``ran-tester-ue/configs/`` add the following to the processes list:
+Configuration
+-------------
+**Controller Configuration:**
+Add the following to the `processes` list in the controller configuration located at ``ran-tester-ue/configs/default.yaml``:
 
 .. code-block:: yaml
 
@@ -30,12 +29,8 @@ In your controller config, located in ``ran-tester-ue/configs/`` add the followi
          type: "b200"
          images_dir: "/usr/share/uhd/images/"
 
-The config file for Jammer will be located in its submodule at ``ran-tester-ue/jammer/(config.yaml)``:
-
-Configuration Reference
-***********************
-
-All configuration parameters are presented here below in the following format:
+**Jammer Configuration:**
+The jammer configuration file is located at ``ran-tester-ue/jammer/configs/basic_jammer.yaml``. Refer to the parameter reference for details:
 
 .. code-block:: yaml
 
@@ -46,22 +41,21 @@ All configuration parameters are presented here below in the following format:
 
 
 Attack Metrics
-**************
+--------------
 
-- Inability of UEs to connect
-- Low channel quality
-- gNB overload /crash
-- UE detach
+- UE connection failures
+- Degraded channel quality
+- gNB overload or crash
+- UE detach events
 
 
-Start the Test
-**************
+Running the Test
+----------------
 
-The following will run a jammer and UE with the requested environment, writing all data to InfluxDB and displaying metrics in real-time with Grafana:
+Start the Jamming attack in the requested environment with real-time metrics displayed in Grafana:
 
 .. code-block:: bash
 
    sudo docker compose --profile system up
 
-The Grafana dashboard can be found at `http://localhost:3300 <http://localhost:3300>`_.
-
+Access Grafana dashboard at `http://localhost:3300 <http://localhost:3300>`_.

@@ -26,6 +26,6 @@ Additionally, the total downlink and uplink bitrates of all UEs on the system ar
 What you should see
 -------------------
 
-Go to `http://localhost:3300` and you should see the following:
+Go to `http://localhost:3300 <http://localhost:3300>`_ and you should see the following:
 
 .. image:: ../images/grafana.png
