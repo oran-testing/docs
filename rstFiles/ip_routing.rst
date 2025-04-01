@@ -1,52 +1,47 @@
-IP Routing
-==========
+IP Routing Configuration
+========================
 
-Routing configuration
----------------------
+gNB Machine Setup
+*****************
+1. Add downlink route to UE network:
 
-**On the gNB machine:**
+   .. code-block:: bash
 
-.. code:: bash
+    sudo ip route add 10.45.0.0/16 via 10.53.1.2
+    ping 10.45.1.2  # Verify downlink connection
 
- sudo ip ro add 10.45.0.0/16 via 10.53.1.2
- ping 10.45.1.2 # check downlink connection
+.. important:: 
+    For single-machine ZMQ setups, prepend all UE network commands with ``ip netns exec ue1``.
 
-Note that all UE network commands must be run inside **netns ue1** if you are running the UE with ZMQ on one machine.
+UE Container Configuration
+**************************
+1. Identify TUN interface IP:
 
-**Inside the UE container:**
+   .. code-block:: bash
 
-First, find the IP of the **tun_rtue** interface:
+    ifconfig tun_rtue | grep 'inet addr'
 
-.. code:: bash
+2. Establish uplink routing:
 
-  ifconfig tun_rtue
+   .. code-block:: bash
 
-
-Then, create a route through the iface:
-
-.. code:: bash
-
- ip ro add 10.53.0.0/16 via <iface ip> dev tun_rtue
- ping 10.53.1.1 # check uplink connection
+    ip route add 10.53.0.0/16 via <tun_rtue_ip> dev tun_rtue
+    ping 10.53.1.1  # Validate uplink connection
 
 
-Running Iperf
--------------
+iPerf3 Performance Testing
+**************************
+1. Server side (gNB):
 
-**On the gNB machine:**
+   .. code-block:: bash
 
-.. code:: bash
+    iperf3 -s -i 1 -p <port_number>
 
- iperf3 -s -i 1 -p <some unused port>
+2. Client side (UE Container):
 
-**Inside the UE container:**
+   .. code-block:: bash
 
-You can send either TCP or UDP traffic at the desired bitrate:
-
-.. code:: bash
-
- # TCP
- iperf3 -c 10.53.1.1 -i 1 -t 60 -p <some unused port>
- # or UDP
- iperf3 -c 10.53.1.1 -i 1 -t 60 -u -b 10M -p <some unused port>
-
+    # TCP
+    iperf3 -c 10.53.1.1 -i 1 -t 60 -p <port_number>
+    # UDP
+    iperf3 -c 10.53.1.1 -i 1 -t 60 -u -b 10M -p <port_number>

@@ -2,11 +2,9 @@ RACH Flooding Attack
 ====================
 
 Introduction
-************
+------------
 
-The RACH (Random Access Channel) procedure is used for the initial connection and communication between the UE and the gNB. This attack specifically targets the RACH preamble message (msg1).
-
-The following are the contents of the RACH preamble message:
+The Random Access Channel (RACH) procedure facilitates initial communication between UE and the gNB. This attack targets the RACH preamble message (msg1), which contains:
 
 .. code-block:: txt
 
@@ -16,15 +14,16 @@ The following are the contents of the RACH preamble message:
     symb
     snr
 
-When the UE is run with the correct arguments, it will attempt to send valid RACH preambles using every sequence_index.
+When enabled, the UE sends valid RACH preambles using every **sequence_index**.
 
-More information on the RACH procedure can be found here: `sharetechnote <https://www.sharetechnote.com/html/5G/5G_RACH.html>`_.
+For more details on  the RACH procedure, refer to `ShareTechnote <https://www.sharetechnote.com/html/5G/5G_RACH.html>`_.
 
 
-Configuring the test
-********************
+Configuration
+-------------
 
-In your controller config, located in ``ran-tester-ue/configs/``, add the following to the processes list:
+**Controller Configuration:**
+Add the following to the `processes` list in the controller configuration located at ``ran-tester-ue/configs/default.yaml``:
 
 .. code-block:: yaml
 
@@ -39,22 +38,21 @@ In your controller config, located in ``ran-tester-ue/configs/``, add the follow
  
 
 Attack Metrics
-**************
+--------------
 
-- Inability to register new UEs to the RAN
-- UE disconnect
-- RAN crash or freeze
-- Timing issues with existing UEs
+- Failure to register new UEs
+- UE disconnections
+- RAN crashes or freezes
+- Timing issues for connected UEs
 
 
-Start Security Test
-*******************
+Running the Test
+----------------
 
-The following will run the RACH flooding attack with the requested environment, writing all data to InfluxDB and displaying metrics in real-time with Grafana:
+Start the RACH flooding attack in the requested environment with real-time metrics displayed in Grafana:
 
 .. code-block:: bash
 
    sudo docker compose --profile system up
 
-The Grafana dashboard can be found at `http://localhost:3300 <http://localhost:3300>`_.
-
+Access Grafana dashboard at `http://localhost:3300 <http://localhost:3300>`_.
