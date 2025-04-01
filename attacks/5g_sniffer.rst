@@ -50,10 +50,19 @@ Attack Metrics
 --------------
 
 - MIB (Master Information Block)
+    - Cell ID
+    - SFN (Single-frequency network)
+    - SCS (Supplemental Coverage from Space)
+    - CFO (Carrier Frequency Offset)
 - SSB (Synchronization Signal Block)
 - Cell frequency
 - RNTI (Radio Network Temporary Identifier)
 - DCI (Downlink Control Information)
+    - Slot index
+    - Correlation
+    - Symbol in chunk
+    - Sample time
+    - Found aggregation level
 
 
 Running the Test
