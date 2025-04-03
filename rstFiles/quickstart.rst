@@ -1,14 +1,8 @@
 Quickstart Guide
 ================
 
-Dependencies
-------------
-
-The RAN Tester UE system has the following necessary dependencies. Please install them beforehand:
-
-    - `Docker <https://docs.docker.com/engine/install/ubuntu/>`_
-    - `UHD <https://files.ettus.com/manual/page_install.html>`_
-
+.. important:: 
+    The RAN Tester UE system is fully dockerized, so please install `Docker <https://docs.docker.com/engine/install/ubuntu/>`_ beforehand.
 
 Building the Containers
 -----------------------
