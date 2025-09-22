@@ -19,11 +19,17 @@ First, clone the core repository and its submodules:
 
    git clone --recurse-submodules https://github.com/oran-testing/ran-tester-ue
 
+Navigate to the directory and run the system setup script:
+
+.. code-block:: bash
+
+   cd ran-tester-ue
+   sudo ./scripts/system_setup.sh
+
 Next, build the necessary containers. Run the following command to pull images for the **components** profile defined in ``~/docker-compose.yaml``, which includes rtUE, Jammer, Uu agent, and Sniffer:
 
 .. code-block:: bash
     
-   cd ~/ran-tester-ue 
    sudo docker compose --profile components pull
 
 Now, pull images for the **system** profile, which includes Grafana, InfluxDB, and Controller:
@@ -62,6 +68,24 @@ The default environment is defined in the controller configuration file located 
 
         # This points to a configuration on the host machine
         DOCKER_CONTROLLER_INIT_CONFIG=configs/default.yaml
+
+
+Check Network Configuration
+---------------------------
+
+Before starting the containers, check for potential subnet conflicts between Docker's network and your local network interface:
+
+.. code-block:: bash
+
+   ifconfig
+
+If you notice that Docker's default subnet conflicts with your local network subnet, you'll need to change the Docker network configuration. Modify the TCP gateway and subnet in your Docker configuration to use a different range, then restart Docker:
+
+.. code-block:: bash
+
+   sudo systemctl restart docker
+
+After resolving any network conflicts, you can proceed to start the security test.
 
 
 Start Security Test
