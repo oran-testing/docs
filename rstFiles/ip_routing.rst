@@ -1,6 +1,23 @@
 IP Routing Configuration
 ========================
 
+Prerequisites
+*************
+
+IP routing configuration and testing requires **iperf3**. Please install it beforehand:
+
+**Ubuntu/Debian:**
+
+.. code-block:: bash
+
+   sudo apt install iperf3
+
+**Fedora/CentOS/RHEL:**
+
+.. code-block:: bash
+
+   sudo dnf install iperf3
+
 gNB Machine Setup
 *****************
 1. Add downlink route to UE network:
@@ -15,13 +32,20 @@ gNB Machine Setup
 
 UE Container Configuration
 **************************
-1. Identify TUN interface IP:
+1. First, get the container ID and access the container bash:
 
    .. code-block:: bash
 
-    ifconfig tun_rtue | grep 'inet addr'
+    sudo docker ps
+    sudo docker exec -it <container_id> bash
 
-2. Establish uplink routing:
+2. Inside the container, identify TUN interface IP:
+
+   .. code-block:: bash
+
+    ip a show tun_rtue | grep 'inet'
+
+3. Establish uplink routing:
 
    .. code-block:: bash
 
