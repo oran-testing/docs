@@ -4,17 +4,20 @@
 
 IP routing configuration and testing require **iperf3**. Please install it beforehand:
 
-**Ubuntu/Debian:**
 
+`````{tabs}
+````{tab} Ubuntu/Debian
 ```bash
 sudo apt install iperf3
 ```
-
-**Fedora/CentOS/RHEL:**
-
+````
+````{tab} Fedora/CentOS/RHsEL
 ```bash
 sudo dnf install iperf3
 ```
+````
+`````  
+
 
 ## gNB Machine Setup
 

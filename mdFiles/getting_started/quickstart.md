@@ -2,7 +2,7 @@
 
 ## Machine and OS Recommendations
 
-The RAN Tester UE is tested on `Ubuntu 24.04`. However, any Linux distro or macOS machine should be able to run the software with few issues. If problems occur on these platforms, feel free to open an issue.
+The RAN Tester UE is tested on **Ubuntu 24.04**. However, any Linux distro or macOS machine should be able to run the software with few issues. If problems occur on these platforms, feel free to open an issue.
 
 ```{tip}
 We recommend using the Ubuntu real-time kernel, available from Canonical. Alternatively, you can use the low-latency kernel, which is free.
