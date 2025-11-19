@@ -6,7 +6,6 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
@@ -32,13 +31,30 @@ extensions = [
     'sphinx_copybutton',
     'hoverxref.extension',
     'sphinx_tabs.tabs',
+    'myst_parser',
+]
+
+# Allow Markdown files as source
+source_suffix = {
+    '.rst': 'restructuredtext',
+    '.md': 'markdown',
+}
+
+# Optional: enable MyST features
+myst_enable_extensions = [
+    "colon_fence",
+    "deflist",
+    "html_admonition",
+    "html_image",
+    "linkify",
+    "replacements",
 ]
 
 hoverxref_auto_ref = True
 
 hoverxref_role_types = {
-    'hoverxref' : 'tooltip',
-    'ref' : 'tooltip',
+    'hoverxref': 'tooltip',
+    'ref': 'tooltip',
 }
 
 if os.environ.get('READTHEDOCS') != 'True':
@@ -49,12 +65,13 @@ html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 html_theme_options = {
     "display_version": False,
     "show_sourcelink": False,
-    "collapse_navigation" : False,
+    "collapse_navigation": False,
     "sticky_navigation": False,
 }
 
 html_context = {
-    "sidebar_external_links_caption": "Useful Links",
+    "sidebar_external_links_caption":
+    "Useful Links",
     "sidebar_external_links": [
         (
             '<i class="fa fa-globe fa-fw"></i> Website',
@@ -90,9 +107,17 @@ html_css_files = [
 ]
 templates_path = ['_templates']
 
-def bold_point_role(name, rawtext, text, lineno, inliner, options={}, content=[]):
+
+def bold_point_role(name,
+                    rawtext,
+                    text,
+                    lineno,
+                    inliner,
+                    options={},
+                    content=[]):
     node = nodes.literal(text, text)
     node['classes'].append('bold-point')
     return [node], []
+
 
 roles.register_local_role('bold-point', bold_point_role)

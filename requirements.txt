@@ -3,3 +3,7 @@ sphinx_rtd_theme
 sphinx-copybutton
 sphinx-hoverxref
 sphinx-tabs
+mdit-py-plugins
+myst-parser
+linkify-it-py
+sphinx-autobuild
