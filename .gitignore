@@ -1,2 +1,4 @@
 _build
-*.bat
+.vscode/
+**/*env*/   # Ignore any folder containing 'env'
+.env*
