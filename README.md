@@ -29,7 +29,7 @@ For convenience, run the live-reload Sphinx server, which will show live updates
 sphinx-autobuild . _build/html/
 ```
 
-Then, open [http://127.0.0.1:8000/](http://127.0.0.1:8000/) in your browser to see live updates.
+Then, open <http://127.0.0.1:8000/> in your browser to see live updates.
 
 After finishing your work, deactivate the virtual environment by running:
 ```console

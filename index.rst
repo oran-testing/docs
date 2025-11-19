@@ -24,39 +24,39 @@ Our team will respond to any issues as quickly as possible. We appreciate any fe
    :maxdepth: 1
    :caption: Getting Started
 
-   Quickstart <getting_started/quickstart>
-   Routing Traffic <getting_started/ip_routing>
-   Configuration Reference <getting_started/configuration>
+   Quickstart <mdFiles/getting_started/quickstart>
+   Routing Traffic <mdFiles/getting_started/ip_routing>
+   Configuration Reference <mdFiles/getting_started/configuration>
 
 .. toctree::
    :maxdepth: 1
    :caption: Attack Components
 
-   rtUE <components/rtue>
-   OAI UE <components/oai_ue>
-   OFH Attacker <components/ofh_attacker>
-   Sni5Gect <components/sni5gect>
-   RACH Agent <components/rach_agent>
-   SSB Spoofer <components/ssb_spoofer>
-   Jammer <components/jammer>
-   UU Agent <components/uu_agent>
-   LLM Worker <components/llm_worker>
-   LLM Analyzer <components/llm_analyzer>
+   rtUE <mdFiles/components/rtue>
+   OAI UE <mdFiles/components/oai_ue>
+   OFH Attacker <mdFiles/components/ofh_attacker>
+   Sni5Gect <mdFiles/components/sni5gect>
+   RACH Agent <mdFiles/components/rach_agent>
+   SSB Spoofer <mdFiles/components/ssb_spoofer>
+   Jammer <mdFiles/components/jammer>
+   UU Agent <mdFiles/components/uu_agent>
+   LLM Worker <mdFiles/components/llm_worker>
+   LLM Analyzer <mdFiles/components/llm_analyzer>
 
 .. toctree::
    :maxdepth: 1
    :caption: Architecture
 
-   System Controller <architecture/controller>
-   InfluxDB and Grafana <architecture/metrics>
-   Components <architecture/components>
-   Inter-Machine Communication <architecture/imc>
+   System Controller <mdFiles/architecture/controller>
+   InfluxDB and Grafana <mdFiles/architecture/metrics>
+   Components <mdFiles/architecture/components>
+   Inter-Machine Communication <mdFiles/architecture/imc>
 
 .. toctree::
    :maxdepth: 1
    :caption: For Developers
 
-   Coding Style <development/coding_style>
-   Control API <development/control_api>
-   Adding a Component <development/controller_api_guide>
+   Coding Style <mdFiles/development/coding_style>
+   Control API <mdFiles/development/control_api>
+   Adding a Component <mdFiles/development/controller_api_guide>
 
