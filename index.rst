@@ -10,7 +10,7 @@ This project is a security testing tool based on modifications and components fr
 
 This RAN Tester UE (rtUE) is fully software-based and compatible with widely available, commercial off-the-shelf (COTS) software radio hardware. Standardized 3GPP or O-RAN tests, as well as custom test procedures, can be implemented and executed at minimal cost and at different stages of RAN development and integration. This system facilitates testing across multiple commercial and open-source RAN implementations with minimal technical overhead. Additionally, many components on the RAN can be executed automatically by the system.
 
-.. image:: images/soft-t-ue-system.png
+.. image:: assets/soft-t-ue-system.png
 
 Getting Help
 ------------

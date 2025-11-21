@@ -28,4 +28,4 @@ What you should see
 
 Go to `http://localhost:3300 <http://localhost:3300>`_ and you should see the following:
 
-.. image:: ../images/grafana.png
+.. image:: ../assets/grafana.png

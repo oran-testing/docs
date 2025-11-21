@@ -2,7 +2,7 @@
 
 SSB-Spoofer is a free open-source 5G Synchronization Signal Block (SSB) spoofing tool designed for security research and testing. The tool intercepts legitimate SSB signals from 5G base stations (gNBs), modifies critical Master Information Block (MIB) parameters, and retransmits spoofed SSB signals to prevent User Equipment (UE) network attachment. SSB-Spoofer is optimized to overcome several challenges in 5G NR signal manipulation and provides an effective denial-of-service capability against 5G devices.
 
-The tool decodes authentic SSB signals, extracts the MIB information, applies strategic modifications (such as setting cell_barred flag, corrupting CORESET0 indices, and invalidating SearchSpace0 configurations), and continuously transmits the spoofed signals to overpower legitimate gNB transmissions.
+The tool decodes authentic SSB signals, extracts the MIB information, applies strategic modifications (such as setting cell_barred flag, corrupting CORESET0 indices, and invalidating SearchSpace0 configurations), and continuously transmits the spoofed signals to outnumber, overpower, and overlap legitimate SSB transmissions to cause UE misconfiguration.
 
 This research tool was developed as part of security research into 5G network vulnerabilities and cellular communication protocols.
 
@@ -10,7 +10,7 @@ This research tool was developed as part of security research into 5G network vu
 
 - **5G NR SSB Signal Interception**: Captures and decodes legitimate SSB transmissions
 - **MIB Parameter Manipulation**: Modifies critical MIB fields to prevent UE attachment
-- **Continuous Signal Transmission**: Overpowers legitimate gNB signals through continuous spoofed SSB transmission
+- **Continuous Signal Transmission**: Overpowers and outnumbers legitimate gNB signals through continuous spoofed SSB transmission
 - **SDR Hardware Support**: Compatible with USRP B200/B210 and other UHD-supported devices
 - **Configurable Attack Parameters**: Flexible configuration for different attack scenarios
 - **Real-time Signal Processing**: Live capture, modification, and retransmission pipeline
@@ -152,10 +152,10 @@ For targeting specific cells, you may need to:
 ### Common Issues
 
 **UE still connects despite spoofing:**
+- Decrease transmission periodicity from config
 - Increase TX gain to maximum (89 dB for B200)
 - Verify target frequency matches cell center frequency
-- Check that continuous transmission mode is enabled
-- Ensure spoofed signal power exceeds legitimate signal
+- Verify successful transmission with spectrum analysis
 
 **SDR hardware not detected:**
 - Install UHD drivers: `sudo apt-get install libuhd-dev uhd-host`

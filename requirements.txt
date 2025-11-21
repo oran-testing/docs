@@ -7,4 +7,3 @@ mdit-py-plugins
 myst-parser
 linkify-it-py
 sphinx-autobuild
-sphinx-tabs
