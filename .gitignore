@@ -2,3 +2,4 @@ _build
 .vscode/
 **/*env*/   # Ignore any folder containing 'env'
 .env*
+.venv*
