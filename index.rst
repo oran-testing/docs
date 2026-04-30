@@ -37,6 +37,7 @@ Our team will respond to any issues as quickly as possible. We appreciate any fe
    RACH flooding <attacks/rach_flood_attack>
    RRC fuzzing <attacks/rrc_fuzz_attack>
    Sniffing <attacks/5g_sniffer>
+   Fronthaul Packet Replay <attacks/fronthaul_packet_replay>
 
 .. toctree::
    :maxdepth: 1
