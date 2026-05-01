@@ -1,5 +1,5 @@
-Fronthaul Packet Replay Attack
-===============================
+Fronthaul Packet Replay
+========================
 
 Introduction
 ------------
