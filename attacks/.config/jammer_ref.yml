@@ -1,13 +1,13 @@
-amplitude: 0.7                  # specifies the amplitude of the sinusoidal wave being generated
-amplitude_width: 0.05           # specifies the upper and lower limit of the amplitude range for random sampling
-center_frequency: 1.842e9       # sets the central frequency of the wave
-bandwidth: 80e6                 # specifies the frequency bandwidth around the central frequency for random sampling and jamming
-initial_phase: 0                # sets the initial angle for the sinusoidal wave
-sampling_freq: 40e6             # specifies how many samples are generated per second
-num_samples: 20000              # sets the number of IQ samples to generate from the sinusoidal wave
-output_iq_file: "output.fc32"   # specifies the name of the IQ file for outputting IQ values
-output_csv_file: "output.csv"   # specifies the name of the CSV file for plotting IQ values
-write_iq: false                 # enables or disables writing IQ values to a file
-write_csv: true                 # enables or disables writing IQ values to a CSV file
-device_args: "type=b200"        # specifies the type of USRP device used for jamming     
-tx_gain: 70                     # sets the transmitter power level
+amplitude: 0.7                  # Signal amplitude (0-1)
+amplitude_width: 0.05           # Amplitude range width for random sampling
+center_frequency: 3.619200e9    # Center frequency (Hz, FR1: 410e6-7.125e9, FR2: 24.25e9-52.6e9)
+bandwidth: 40e6                 # Bandwidth in Hz
+initial_phase: 0                # Initial phase of the sinusoidal wave
+sampling_freq: 46.080000e6      # Sampling frequency in Hz (must be >= 2x bandwidth)
+num_samples: 20000              # Number of IQ samples to generate
+output_iq_file: "output.fc32"   # Output IQ file path
+output_csv_file: "output.csv"   # Output CSV file path
+write_iq: false                 # Enable/disable writing IQ values to file
+write_csv: true                 # Enable/disable writing CSV output
+device_args: "type=b200"        # USRP device arguments
+tx_gain: 89.5                   # TX gain in dB (0-90)

@@ -19,21 +19,12 @@ To install the customized srsRAN UE:
    make -j$(nproc)
    sudo make install
 
-The UE can be passed arguments described in the following pages to run
-various attacks: -
+Attacks are started through the MCP server via ``start_component``, not by passing arguments to the UE directly:
 
-- :doc:`CQI Manipulation Attack <../attacks/cqi_manipulation>`
-- :doc:`gNB Impersonation Attack <../attacks/gnb_impersonation_attack>`
-- :doc:`IMSI Catching Attack <../attacks/imsi_capture>`
-- :doc:`Preamble Collision Attack <../attacks/preamble_collision>`
-- :doc:`RACH Jamming Attack <../attacks/rach_jamming>`
-- :doc:`RACH Replay Attack <../attacks/rach_replay>`
-- :doc:`RACH Signal Flooding Attack <../attacks/rach_signal_flooding>`
-- :doc:`RoHC Poisoning Attack <../attacks/rohc_poisoning_attack>`
+- :doc:`5G Sniffer <../attacks/5g_sniffer>`
+- :doc:`SSB Spoofing Attack <../attacks/ssb_spoofing>`
 - :doc:`Signaling Storm Injection Attack <../attacks/signal_storming>`
-- :doc:`PDCP message Parroting Attack <../attacks/pdcpParrot>`
-- :doc:`RRC Release Request Spoofing Attack<../attacks/request_spoofing>`
-- :doc:`SDU Fuzzing Attack <../attacks/sdu_fuzzing>`
+- :doc:`Fronthaul Packet Replay <../attacks/fronthaul_packet_replay>`
 
 
 Python Controller and Graphical User Interface
@@ -63,11 +54,14 @@ Run an srsRAN gNB and Open5GS, then send metrics to the ue_controller
 Configuring the UE
 ------------------
 
-The UE controller reads a yaml config file with the following options:
+.. deprecated::
+   The Python controller with ``processes:`` is **deprecated**. Attacks are now configured and started through the MCP server using ``start_component`` with JSON config payloads. See the :doc:`5G Sniffer <../attacks/5g_sniffer>` page for an example.
+
+The legacy Python controller reads a yaml config file with the following structure:
 
 .. code:: bash
-	
-	#YAML config structure
+
+	#YAML config structure (deprecated)
 	gnb:
 		- config: str
 	namespaces:

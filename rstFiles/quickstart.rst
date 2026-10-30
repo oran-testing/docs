@@ -41,24 +41,33 @@ Now, pull images for the **system** profile, which includes Grafana, InfluxDB, a
 Configure Security Test
 -----------------------
 
-The default environment is defined in the controller configuration file located at ``ran-tester-ue/configs/default.yaml``. The following configuration is for a :hoverxref:`Sniffing attack <sniffing_attack>`.
+The default environment is defined in the controller spec file located at ``ran-tester-ue/spec.yaml``. The following configuration is for a :hoverxref:`Sniffing attack <sniffing_attack>`:
 
 .. code-block:: yaml
 
-    processes:                                                  # List of all processes to start
-    - type: "rtue"
-        id: "rtue_uhd_1"
-        config_file: "configs/uhd/ue_uhd.conf"                  # Path to the configuration file for the rtUE
-        rf:
-            type: "b200"                                        # Type of RF device (= USRP B210)
-            images_dir: "/usr/share/uhd/images/"                # Directory for RF images
+    enable_cli: true
 
-    - type: "sniffer"
-        id: "dci_sniffer_1"
-        config_file: "../5g-sniffer/MSU-Private5G184205.toml"   # Path to the configuration file for the sniffer
-        rf:
-            type: "b200"
-            images_dir: "/usr/share/uhd/images/"
+    api_auth:
+      - name: "mcp-server"
+        token: "default_changeme"
+        scopes:
+          - "start_from_json"
+          - "start"
+          - "schemas/rtue"
+          - "schemas/sniffer"
+          - "list"
+          - "status"
+          - "stop"
+          - "logs"
+          - "health"
+        allowed_components: ["rtue", "sniffer"]
+
+    build_spec:
+      - component: "oran-testing/rtue"
+        branch: "main"
+        pull: true
+
+    run_spec: []
 
 .. note::
 

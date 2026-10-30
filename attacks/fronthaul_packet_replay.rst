@@ -1,10 +1,50 @@
 Fronthaul Packet Replay
-========================
+=======================
 
 Introduction
 ------------
 
 A replay-based denial-of-service evaluation framework for 5G O-RAN fronthaul networks. It takes packet captures, transforms them into configurable attack PCAPs (varying rate, direction, VLAN, and MAC addresses), replays them against a live srsRAN stack (RU emulator + gNB), and analyzes the impact on fronthaul KPIs.
+
+This attack is implemented via the **ofh** (Open Fronthaul) component.
+
+Configuration
+-------------
+
+**MCP Server (start_component):**
+
+Use the ``ofh`` component type with the following JSON configuration:
+
+.. code-block:: json
+
+   {
+     "id": "ofh_attacker_1",
+     "injection_points": ["DU", "RU"],
+     "pcap_dir": "Traffic/",
+     "pcap_list": [],
+     "du": "enp5s0f1",
+     "ru": "enp8s0f0np0",
+     "attacker_dir": "/attack_env",
+     "results_dir": "./attack_results",
+     "duration_seconds": 10,
+     "tcpreplay_topspeed": 1,
+     "tcpreplay_loop": 0,
+     "keep_history": "0"
+   }
+
+**Configuration parameters:**
+
+- ``injection_points``: List of injection points (``"DU"``, ``"RU"``, or both)
+- ``pcap_dir``: Directory containing base PCAP captures
+- ``pcap_list``: Specific PCAP files to replay (empty = all in pcap_dir)
+- ``du``: Network interface for DU-side injection
+- ``ru``: Network interface for RU-side injection
+- ``attacker_dir``: Working directory inside the attacker container
+- ``results_dir``: Output directory for attack results
+- ``duration_seconds``: Duration of each attack trial in seconds
+- ``tcpreplay_topspeed``: Replay at maximum possible speed (1 = enabled)
+- ``tcpreplay_loop``: Number of replay loops (0 = infinite)
+- ``keep_history``: Preserve history between runs (``"0"`` = discard)
 
 Setup
 -----
@@ -13,27 +53,12 @@ Setup
 
 Hardware: two NICs bound to the fronthaul interfaces:
 
-- ``enp5s0f1``  DU-side injection port 
+- ``enp5s0f1`` DU-side injection port
 - ``enp8s0f0np0`` RU-side injection port
 
-If interface names differ, update ``DU_IFACE`` and ``RU_IFACE`` at the top of ``auto_attacker.sh``.
+**Generating Attack PCAPs**
 
-Software: all must be in ``$PATH`` or configured with absolute paths inside the scripts:
-
-- ``tcpreplay`` -- packet replay at line rate
-- ``expect`` -- automates interactive gNB startup
-- srsRAN gNB binary and RU emulator binary
-- ``pcap_gen.py`` from the companion Dos-attacker tool at ``$HOME/Dos-attacker/python_code/pcap_gen.py``
-- Python with ``pandas`` (``pip install pandas``)
-
-Permissions: ``tcpreplay`` and the gNB require root. The user running the scripts must have passwordless ``sudo`` or equivalent sudoers entry.
-
-
-**Generating Attack PCAPs** (``generate_pcap.sh``)
-
-``generate_pcap.sh`` calls ``pcap_gen.py`` for every combination of base capture × rate × direction, writing modified attack PCAPs to ``Traffic/custom/``. ``pcap_gen.py`` rewrites Ethernet headers (VLAN tag, source and destination MACs) and rescales inter-packet timing so the output hits the requested bitrate when replayed at 1× speed.
-
-Example invocation for a single file:
+The fronthaul attacker replays pre-generated PCAP files. Example PCAP generation:
 
 .. code-block:: bash
 
@@ -45,32 +70,11 @@ Example invocation for a single file:
        --dst   90:e3:ba:00:12:22 \
        --mbps  100
 
-Argument reference:
+PCAP naming convention: ``{base_name}_{direction}_{rate}.pcap``
 
-- ``--pcap <file:N>`` -- path to the base PCAP; the ``:N`` suffix loops the capture N times when building the output.
-- ``--out <path>`` -- destination path for the generated PCAP.
-- ``--vlan <id>`` -- VLAN ID injected into every frame; must match the fronthaul VLAN on the DUT (33 in this testbed).
-- ``--src <mac>`` -- source MAC written into each frame; set to the DU MAC (``90:e2:ba:8e:39:51``) when sending toward the RU, or the RU MAC (``90:e3:ba:00:12:22``) when sending toward the DU.
-- ``--dst <mac>`` -- destination MAC; the counterpart of ``--src``.
-- ``--mbps <rate>`` -- target replay rate in Mbps (10, 100, or 1000).
-
-To generate the full set of attack PCAPs:
-
-.. code-block:: bash
-
-   bash generate_pcap.sh
-   # Output written to Traffic/custom/
-
-**Output Naming Convention**
-
-Generated PCAPs follow the pattern ``{base_name}_{direction}_{rate}.pcap``:
-
-- ``RD`` -- traffic flowing **R**\U -> **D**\U
-- ``DR`` -- traffic flowing **D**\U -> **R**\U
-- Rate is one of ``10``, ``100``, or ``1000`` (Mbps)
-
-Example: ``cp_dl_long_10mb_DR_100.pcap`` is a Control-Plane Downlink long-burst capture reshaped to flow DU -> RU at 100 Mbps.
-
+- ``RD``: traffic flowing RU -> DU
+- ``DR``: traffic flowing DU -> RU
+- Rate: ``10``, ``100``, or ``1000`` (Mbps)
 
 Attack Metrics
 --------------
@@ -80,31 +84,66 @@ Attack Metrics
 - Degraded or lost transmit throughput (``TX_TOTAL`` drop)
 - gNB or RU emulator crash
 - Fronthaul link saturation with no recovery
-- Any other useful KPI degradation observed in the logs
-
 
 Running the Test
 ----------------
 
-**Step 1 -- Run the automated attacker:**
+**1. Controller Spec**
+
+Use the dedicated ``ofh_attacker`` controller spec (``configs/ofh_attacker.yaml``):
+
+.. code-block:: yaml
+
+   enable_cli: true
+
+   api_auth:
+     - name: "mcp-server"
+       token: "testing_token"
+       scopes:
+         - "start_from_json"
+         - "start"
+         - "schemas/ofh"
+         - "list"
+         - "status"
+         - "stop"
+         - "logs"
+       allowed_components: ["ofh"]
+
+   build_spec:
+     - component: "oran-testing/Dos-attacker"
+       branch: "main"
+       pull: true
+
+   run_spec:
+     - component: "oran-testing/Dos-attacker"
+       worker_thread: "ofh_attacker"
+       name: "ofh_attacker_1"
+       config_file: "configs/ofh/ofh.toml"
+       rf:
+         type: "none"
 
 .. code-block:: bash
 
-   sudo bash auto_attacker.sh
-   # Per-trial logs written to attack_results/
-   # Crash events recorded in attack_results/crash_logs.txt
+   CONTROLLER_SPEC=configs/ofh_attacker.yaml docker compose up -d
 
-The script iterates over every PCAP in ``Traffic/custom/`` and tests each at both injection points, logging a 10-second monitoring window per trial.
+**2. Start the Fronthaul Packet Replay via the MCP server:**
 
-**Step 2 -- Analyze results:**
+.. code-block:: json
 
-.. code-block:: bash
+   {
+     "component_type": "ofh",
+     "config_json": {
+       "id": "ofh_attacker_1",
+       "injection_points": ["DU", "RU"],
+       "pcap_dir": "Traffic/",
+       "du": "enp5s0f1",
+       "ru": "enp8s0f0np0",
+       "duration_seconds": 10,
+       "tcpreplay_topspeed": 1
+     },
+     "rf_config": {"type": "none"}
+   }
 
-   pip install pandas
-   python3 parse_log.py
+The OFH attacker does not use RF hardware (``rf_config: {"type": "none"}``). It operates entirely over Ethernet.
 
-To run the full pipeline (generate -> attack -> analyze) in one command:
-
-.. code-block:: bash
-
-   python3 main.py
+Monitor with ``get_component_health`` and ``get_component_logs``. Stop with ``stop_component``.

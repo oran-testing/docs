@@ -7,44 +7,50 @@ Sniffing Attack
 
    This attack is based on the open-source `Spritelab 5G Sniffer <https://github.com/spritelab/5GSniffer>`_.
 
-
 Introduction
 ------------
 
-5G Sniffer is an open-source tool that decodes the Physical Downlink Control Channel (PDCCH) of 5G base stations, revealing Downlink Control Information (DCI) and Radio Network Temporary Identifiers (RNTI).
-It overcomes 5G-specific challenges, such as decoding encrypted information, and is optimized for efficiency.
+5G Sniffer is an open-source tool that decodes the Physical Downlink Control Channel (PDCCH) of 5G base stations, revealing Downlink Control Information (DCI) and Radio Network Temporary Identifiers (RNTI). It overcomes 5G-specific challenges, such as decoding encrypted information, and is optimized for efficiency.
 
+Configuration
+-------------
 
-Configuring the Test
---------------------
-**Controller Configuration:**
-Add the following to the `processes` list in the controller configuration located at ``ran-tester-ue/configs/default.yaml``:
+**MCP Server (start_component):**
 
-.. code-block:: yaml
+Use the ``sniffer`` component type with the following JSON configuration schema:
 
-    processes:
-    - type: "sniffer"
-        id: "dci_sniffer_1"
-        config_file: "../5g-sniffer/MSU-Private5G184205.toml"
-        rf:
-            type: "b200"
-            images_dir: "/usr/share/uhd/images/"
+.. code-block:: json
 
+   {
+     "id": "dci_sniffer_1",
+     "file_path": "/home/oran-testbed/5g-sniffer/iq_1842MHz_pdcch_traffic.fc32",
+     "sample_rate": 23040000,
+     "frequency": 1842500000,
+     "nid_1": 1,
+     "ssb_numerology": 0,
+     "pdcch_coreset_id": 1,
+     "pdcch_subcarrier_offset": 426,
+     "pdcch_num_prbs": 30,
+     "pdcch_numerology": 0,
+     "pdcch_dci_sizes_list": [41],
+     "pdcch_scrambling_id_start": 1,
+     "pdcch_scrambling_id_end": 10,
+     "pdcch_rnti_start": 17921,
+     "pdcch_rnti_end": 17930,
+     "pdcch_interleaving_pattern": "non-interleaved",
+     "pdcch_coreset_duration": 1,
+     "pdcch_AL_corr_thresholds": [1, 0.5, 0.5, 1, 1],
+     "pdcch_num_candidates_per_AL": [0, 4, 4, 0, 0]
+   }
 
-**Sniffer Configuration:**
-The sniffer configuration file is located at ``ran-tester-ue/5g-sniffer/5gsniffer/(config.toml)``. Refer to the parameter reference for details:
+**Required fields:** ``id``, ``file_path``, ``sample_rate``, ``frequency``, ``nid_1``, ``ssb_numerology``
 
-
-.. code-block:: yaml
-
-    parameter: <default value>  # Parameter description
+**Field Reference:**
 
 .. literalinclude:: .config/sniffer_ref.yml
     :language: yaml
 
-
 Refer to the `Spritelab README <https://github.com/spritelab/5GSniffer/blob/master/README.md#general-sniffer-config-parameters>`_ for a comprehensive reference.
-
 
 Attack Metrics
 --------------
@@ -64,14 +70,55 @@ Attack Metrics
     - Sample time
     - Found aggregation level
 
-
 Running the Test
 ----------------
 
-Start the Sniffing attack in the requested environment with real-time metrics displayed in Grafana:
+**1. Controller Spec**
+
+Add the sniffer to the controller spec (``spec.yaml``):
+
+.. code-block:: yaml
+
+   build_spec:
+     - component: "oran-testing/rtue"
+       branch: "main"
+       pull: true
+
+   api_auth:
+     - name: "mcp-server"
+       token: "default_changeme"
+       scopes:
+         - "start_from_json"
+         - "start"
+         - "schemas/sniffer"
+         - "list"
+         - "status"
+         - "stop"
+       allowed_components: ["sniffer"]
+
+   run_spec: []
+
+Then start the controller:
 
 .. code-block:: bash
 
-   sudo docker compose --profile system up
+   docker compose up -d
 
-Access Grafana dashboard at `http://localhost:3300 <http://localhost:3300>`_.
+**2. Start the Sniffing attack via the MCP server:**
+
+.. code-block:: json
+
+   {
+     "component_type": "sniffer",
+     "config_json": {
+       "id": "dci_sniffer_1",
+       "file_path": "/tmp/sniffer_output.fc32",
+       "sample_rate": 23040000,
+       "frequency": 1842500000,
+       "nid_1": 1,
+       "ssb_numerology": 0
+     },
+     "rf_config": {"type": "b200"}
+   }
+
+Monitor with ``get_component_health`` and ``get_component_logs``. Stop with ``stop_component``.
